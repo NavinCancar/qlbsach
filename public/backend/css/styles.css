@@ -1,0 +1,307 @@
+@import url('https://fonts.googleapis.com/css2?family=Philosopher:wght@400;700&family=Poppins:wght@400;500;600&display=swap');
+
+:root {
+  /*colors*/
+  --sky: #9fd7f9;
+  --glass: #9fd6f960;
+  --sonic-silver: #6e767d;
+  --blue-clear: #6585e642;
+  --ghost-white: #eeeff6;
+  --light-gray: #cccccc;
+  --blue: #6586e6;
+  --light-blue: #cfebfc;
+  --dark-blue: #0f2464;
+  --white: #ffffff;
+  --gold: #ffd700;
+
+  /*typography*/
+  --ff-philosopher: 'Philosopher', sans-serif;
+  --ff-poppins: 'Poppins', sans-serif;
+
+  --fs-1: 4rem;
+  --fs-2: 3.2rem;
+  --fs-3: 2.7rem;
+  --fs-4: 2.4rem;
+  --fs-5: 2.2rem;
+  --fs-6: 2rem;
+  --fs-7: 1.8rem;
+  --fs-8: 1.5rem;
+  --fs-9: 1.3rem;
+
+  --fw-500: 500;
+  --fw-700: 700;
+
+  /*spacing*/
+  --section-padding: 80px;
+
+    /**
+   * transition
+   */
+
+   --transition-1: 0.25s ease;
+   --transition-2: 0.5s ease;
+   --cubic-out: cubic-bezier(0.33, 0.85, 0.4, 0.96);
+}
+
+.primary-text { 
+  color: var(--dark-blue);
+}
+
+.second-text {
+  color: var(--blue);
+}
+
+.primary-bg {
+  background-color: var(--white);
+  background-color: #d2dbff;
+}
+
+.secondary-bg {
+  background-color: var(--blue-clear);
+  background-color: #f0f4ff;
+}
+
+.secondary-bg-hover{
+  background-color: var(--white);
+}
+
+.secondary-bg-hover:hover{
+  background-color: var(--blue-clear);
+}
+
+.primary-font {
+  font-family: var(--ff-philosopher);
+  line-height: 1.2;
+}
+
+.secondary-font {
+  color: var(--blue);
+  text-transform: uppercase;
+  font-weight: var(--fw-700);
+  letter-spacing: 4px;
+  text-align: center;
+}
+
+.rounded-full {
+  border-radius: 100%;
+}
+
+#wrapper {
+  overflow-x: hidden;
+  background-image: linear-gradient(
+    to right,
+    #fff,
+    #9fd7f9,
+    #fff
+  );
+}
+
+#sidebar-wrapper {
+  min-height: 100vh;
+  margin-left: -15rem;
+  -webkit-transition: margin 0.25s ease-out;
+  -moz-transition: margin 0.25s ease-out;
+  -o-transition: margin 0.25s ease-out;
+  transition: margin 0.25s ease-out;
+}
+
+#sidebar-wrapper .sidebar-heading {
+  padding: 0.875rem 1.25rem;
+  font-size: 1.2rem;
+}
+
+#sidebar-wrapper .list-group {
+  width: 15rem;
+}
+
+#page-content-wrapper {
+  min-width: 100vw;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+  margin-left: 0;
+}
+
+/*Menu*/
+#menu-toggle {
+  cursor: pointer;
+}
+
+.list-group-item {
+  border: none;
+  padding: 17px 30px;
+}
+
+.list-group-item.active, .name {
+  background-color: transparent;
+  color: var(--dark-blue);
+  font-weight: bold;
+  border: none;
+}
+
+.list-group-item-action:hover, .name:hover{
+  color: var(  --blue);
+}
+
+.card .card-body{
+  padding: 0;
+  padding-left: 10px;
+}
+
+.card .card-body .list-group-item{
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+@media (min-width: 768px) {
+  #sidebar-wrapper {
+    margin-left: 0;
+  }
+
+  #page-content-wrapper {
+    min-width: 0;
+    width: 100%;
+  }
+
+  #wrapper.toggled #sidebar-wrapper {
+    margin-left: -15rem;
+  }
+}
+
+/*Toggler button*/
+.navbar-light .navbar-toggler {
+  color: rgba(0,0,0,0);
+  border-color: rgba(0,0,0,0);
+}
+
+/*Dropdown menu*/
+.card-header {
+  padding: 0;
+  margin-bottom: 0;
+  background-color: #fff;
+  border-bottom: 0px;
+}
+
+.card{
+  border: 0px;
+}
+
+ul.dropdown-menu {
+  right: 0;
+  left: auto;
+}
+
+/*Ngày giờ*/
+.today{
+  padding: 5px 5px 0px 5px;
+  background-color: var(--dark-blue);
+  color: #fff;
+}
+
+.today:hover{
+  background-color: var(--blue);
+}
+
+/*Page number*/
+.page-item .page-link {
+  z-index: 3;
+  color: var(--dark-blue);
+  background-color: #fff;
+  border-color: #dee2e6;
+}
+.page-item.active .page-link {
+  color: #fff;
+  background-color: var(--dark-blue);
+  border-color: var(--dark-blue);
+}
+
+.pagination {
+  padding-left: 48%;
+}
+
+/*Button*/
+.btn-search{
+  background-color: var(--dark-blue);
+  color: #fff;
+}
+
+.btn-search:hover{
+  background-color: var(--blue);
+  color: #fff;
+}
+
+.center{
+  margin: auto;
+}
+
+.position-center {
+  width:62%;
+  margin: 0 auto;
+}
+
+.form-group{
+  padding-bottom: 10px;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  color: var(--blue);
+  font-weight: var(--fw-500);
+  gap: 5px;
+  transition: var(--transition-1);
+}
+
+a:hover{
+  color: var(--white); 
+}
+
+/*Thống kê*/
+.time .col-md-3{
+  margin-top: 10px;
+}
+
+
+
+
+/*Trang login*/
+#login-wrapper {
+  overflow-x: hidden;
+  background-image: url(../images/background.jpg);
+  background-size: 100% ;
+}
+
+.login-form {
+  border-radius: 20px;
+  margin-top: 120px !important;
+  width: 24% !important;
+  background-color: white !important;
+  padding: 50px;
+  padding-top: 30px;
+}
+
+.btn-login {
+  width: 100%;
+  border: none;
+  border-radius: 50px;
+
+}
+
+.login-form-control {
+  color: rgba(0, 0, 0, .87);
+  border-bottom-color: rgba(0, 0, 0, .42);
+  box-shadow: none !important;
+  border: none;
+  border-bottom: 1px solid;
+  border-radius: 4px 4px 0 0;
+}
+
+.login-form-control:focus {
+  border-bottom-color: var(--blue);
+}
+
+@media only screen and (max-width: 600px) {
+  .login-form {
+      width: 90% !important;
+  }
+}
