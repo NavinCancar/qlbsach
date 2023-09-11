@@ -29,7 +29,7 @@ Route::post('/danh-gia/{SACH_MA}', 'App\Http\Controllers\ProductController@danh_
 
 //Login
 Route::get('/dang-nhap','App\Http\Controllers\CostumerController@dang_nhap'); ///ok
-Route::get('/logout', 'App\Http\Controllers\CostumerController@logout'); ///ok
+Route::get('/dang-xuat', 'App\Http\Controllers\CostumerController@logout'); ///ok
 Route::post('/costumer-check', 'App\Http\Controllers\CostumerController@trang_chu'); ///ok
 
 //Sign up
@@ -51,7 +51,7 @@ Route::get('/delete-cart/{SACH_MA}', 'App\Http\Controllers\CartController@delete
 
 Route::get('/admin', 'App\Http\Controllers\AdminController@index'); ///ok
 Route::get('/dashboard', 'App\Http\Controllers\AdminController@show_dashboard'); ///ok
-Route::get('/log-out', 'App\Http\Controllers\AdminController@logout'); ///ok
+Route::get('/logout', 'App\Http\Controllers\AdminController@logout'); ///ok
 Route::post('/admin-dashboard', 'App\Http\Controllers\AdminController@dashboard'); ///ok
 
 //Category Product: Thể loại sách

@@ -29,18 +29,38 @@
                 <img src="{{asset('./public/frontend/images/logo-small.png')}}" width="150px">
             </div>
             <div class="list-group list-group-flush my-3">
-                <a href="{{URL::to('/dashboard')}}" class="list-group-item list-group-item-action bg-transparent primary-text fw-bold">
-                    <i class="fas fa-tachometer-alt me-2"></i>Dashboard
-                </a>
                 <div id="accordion">
                     <div class="card">
+                        <a href="{{URL::to('/dashboard')}}" class="list-group-item list-group-item-action bg-transparent primary-text fw-bold">
+                            <i class="fas fa-tachometer-alt me-2"></i>Dashboard
+                        </a>
+                        <!--Sách-->
                         <div class="card-header">
                             <a class="btn list-group-item list-group-item-action bg-transparent primary-text fw-bold"
-                                data-bs-toggle="collapse" href="#collapseOne">
-                                <i class="fas fa-book me-2"></i>Thể loại sách
+                                data-bs-toggle="collapse" href="#collapse1">
+                                <i class="fas fa-book me-2"></i>Sách
                             </a>
                         </div>
-                        <div id="collapseOne" class="collapse" data-bs-parent="#accordion">
+                        <div id="collapse1" class="collapse" data-bs-parent="#accordion">
+                            <div class="card-body">
+                                <a href="{{URL::to('/add-product')}}"
+                                    class="list-group-item list-group-item-action bg-transparent primary-text fw-bold">
+                                    Thêm sách
+                                </a>
+                                <a href="{{URL::to('/all-product')}}"
+                                    class="list-group-item list-group-item-action bg-transparent primary-text fw-bold">
+                                    Danh sách sách
+                                </a>
+                            </div>
+                        </div>
+                        <!--Thể loại sách-->
+                        <div class="card-header">
+                            <a class="btn list-group-item list-group-item-action bg-transparent primary-text fw-bold"
+                                data-bs-toggle="collapse" href="#collapse2">
+                                <i class="fas fa-swatchbook me-2"></i>Thể loại sách
+                            </a>
+                        </div>
+                        <div id="collapse2" class="collapse" data-bs-parent="#accordion">
                             <div class="card-body">
                                 <a href="{{URL::to('/add-category-product')}}"
                                     class="list-group-item list-group-item-action bg-transparent primary-text fw-bold">
@@ -52,6 +72,7 @@
                                 </a>
                             </div>
                         </div>
+
                         <a href="{{URL::to('/thong-ke')}}"
                             class="list-group-item list-group-item-action bg-transparent primary-text fw-bold">
                             <i class="fas fa-chart-bar me-2"></i>Thống kê
@@ -109,7 +130,7 @@
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="{{URL::to('/show-employee')}}">Thông tin tài khoản</a></li>
                                 <li><a class="dropdown-item" href="{{URL::to('/change-password')}}">Đổi mật khẩu</a></li>
-                                <li><a class="dropdown-item" href="{{URL::to('/log-out')}}">Đăng xuất</a></li>
+                                <li><a class="dropdown-item" href="{{URL::to('/logout')}}">Đăng xuất</a></li>
                             </ul>
                         </li>
                     </ul>

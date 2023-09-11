@@ -30,7 +30,7 @@
                                   <td>{{$cate_pro->TLS_MA}}</td>
                                   <td>{{$cate_pro->TLS_TEN}}</td>
                                   <td>
-                                    <a href="{{URL::to('/edit-category-product/'.$cate_pro -> TLS_MA)}}" class="active styling-edit" ui-toggle-class=""><i class="fa fa-pencil-alt text-success text-active"></i></a>
+                                    <a href="{{URL::to('/edit-category-product/'.$cate_pro -> TLS_MA)}}" class="active styling-edit" ui-toggle-class=""><i class="fa fa-pen text-success text-active"></i></a>
                                     <a onclick="return confirm('Bạn có chắc chắn muốn xóa mục này không?')" href="{{URL::to('/delete-category-product/'.$cate_pro -> TLS_MA)}}" class="active styling-edit" ui-toggle-class=""><i class="fa fa-times text-danger text"></i></a>
                                   </td>
                                 </tr>
