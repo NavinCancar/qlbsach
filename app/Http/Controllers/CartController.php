@@ -16,7 +16,7 @@ class CartController extends Controller
 {
 
 /*-----------------------------------*\
-  #FRONTEND <ONLY KHÁCH THÀNH VIÊN>
+  #FRONTEND <FOR KHÁCH THÀNH VIÊN>
 \*-----------------------------------*/
 
     public function AuthLogin(){

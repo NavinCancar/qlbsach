@@ -33,7 +33,7 @@ class CategoryProduct extends Controller
     }
 
 /*-----------------------------------*\
-  #BACKEND <ONLY CHỦ CỬA HÀNG>
+  #BACKEND <FOR CHỦ CỬA HÀNG>
 \*-----------------------------------*/
 
     public function AuthLoginChu(){

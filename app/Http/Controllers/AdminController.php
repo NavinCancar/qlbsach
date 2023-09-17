@@ -15,7 +15,7 @@ class AdminController extends Controller
 {
 
 /*-----------------------------------*\
-  #BACKEND <ONLY NHÂN VIÊN>
+  #BACKEND <FOR NHÂN VIÊN>
 \*-----------------------------------*/
 
     public function AuthLogin(){
