@@ -29,6 +29,7 @@ class CartController extends Controller
         }
     }
 
+    //Giỏ hàng
     public function save_cart(Request $request){
         $this->AuthLogin();
         $KH_MA = Session::get('KH_MA');
@@ -128,5 +129,187 @@ class CartController extends Controller
         DB::table('chi_tiet_gio_hang')->where('GH_MA', $all_cart_product->GH_MA)->where('SACH_MA',$SACH_MA)->delete();
         
         return Redirect::to('show-cart');
+    }
+
+    //Đơn đặt hàng???
+    public function show_all_bill(){
+        $this->AuthLogin();
+        $KH_MA = Session::get('KH_MA');
+        $all_category_product = DB::table('loai_noi_that')->get();
+        $all_DDH=  DB::table('don_dat_hang')
+        ->join('trang_thai','don_dat_hang.TT_MA','=','trang_thai.TT_MA')
+        ->join('dia_chi_giao_hang','dia_chi_giao_hang.DCGH_MA','=','don_dat_hang.DCGH_MA')
+        ->where('dia_chi_giao_hang.KH_MA', $KH_MA)->orderby('don_dat_hang.DDH_NGAYDAT','desc')->paginate(5);
+        $group_DDH = DB::table('don_dat_hang')
+        ->join('chi_tiet_don_dat_hang','don_dat_hang.DDH_MA','=','chi_tiet_don_dat_hang.DDH_MA')
+        ->join('noi_that','noi_that.NT_MA','=','chi_tiet_don_dat_hang.NT_MA')
+        ->join('dia_chi_giao_hang','dia_chi_giao_hang.DCGH_MA','=','don_dat_hang.DCGH_MA')
+        ->where('dia_chi_giao_hang.KH_MA', $KH_MA)->get();
+        
+        return view('pages.cart.show_all_bill')->with('category', $all_category_product)
+        ->with('all_DDH', $all_DDH)->with('group_DDH', $group_DDH);
+    }
+
+    public function show_detail_bill($DDH_MA){
+        $this->AuthLogin();
+        $KH_MA = Session::get('KH_MA');
+        $all_category_product = DB::table('loai_noi_that')->get();
+        $all_DDH=  DB::table('don_dat_hang')
+        ->join('trang_thai','don_dat_hang.TT_MA','=','trang_thai.TT_MA')
+        ->join('dia_chi_giao_hang','dia_chi_giao_hang.DCGH_MA','=','don_dat_hang.DCGH_MA')
+        ->join('hinh_thuc_thanh_toan','hinh_thuc_thanh_toan.HTTT_MA','=','don_dat_hang.HTTT_MA')
+        ->join('tinh_thanh_pho','dia_chi_giao_hang.TTP_MA','=','tinh_thanh_pho.TTP_MA')
+        ->where('don_dat_hang.DDH_MA', $DDH_MA)->get();
+
+        $group_DDH = DB::table('chi_tiet_don_dat_hang')
+        ->join('noi_that','noi_that.NT_MA','=','chi_tiet_don_dat_hang.NT_MA')
+        ->join('hinh_anh_noi_that','noi_that.NT_MA','=','hinh_anh_noi_that.NT_MA')
+        ->where('hinh_anh_noi_that.HANT_DUONGDAN', 'like', '%-1%')
+        ->where('chi_tiet_don_dat_hang.DDH_MA', $DDH_MA)->get();
+
+        return view('pages.cart.show_detail_bill')->with('category', $all_category_product)
+        ->with('all_DDH', $all_DDH)->with('group_DDH', $group_DDH);
+    }
+    
+    //Đặt hàng
+    public function show_detail_order(){
+        $this->AuthLogin();
+        $KH_MA = Session::get('KH_MA');
+        $all_category_product = DB::table('loai_noi_that')->get();
+
+        $DCGH = DB::table('dia_chi_giao_hang')
+        ->join('tinh_thanh_pho','dia_chi_giao_hang.TTP_MA','=','tinh_thanh_pho.TTP_MA')
+        ->where('dia_chi_giao_hang.KH_MA', $KH_MA)->get();
+
+        $CTGH = DB::table('chi_tiet_gio_hang')
+        ->join('noi_that','noi_that.NT_MA','=','chi_tiet_gio_hang.NT_MA')
+        ->join('hinh_anh_noi_that','noi_that.NT_MA','=','hinh_anh_noi_that.NT_MA')
+        ->join('gio_hang','chi_tiet_gio_hang.GH_MA','=','gio_hang.GH_MA')
+        ->join('khach_hang','khach_hang.KH_MA','=','gio_hang.KH_MA')
+        ->where('hinh_anh_noi_that.HANT_DUONGDAN', 'like', '%-1%')
+        ->where('khach_hang.KH_MA', $KH_MA)->get();
+
+        $HTTT = DB::table('hinh_thuc_thanh_toan')->orderby('HTTT_MA')->get();
+
+        return view('pages.cart.show_detail_order')->with('category', $all_category_product)
+        ->with('DCGH', $DCGH)->with('CTGH', $CTGH)->with('HTTT', $HTTT);
+    }
+
+    public function order(Request $request){
+        $this->AuthLogin();
+        $KH_MA = Session::get('KH_MA');
+
+        $DCGH = DB::table('dia_chi_giao_hang')
+        ->join('tinh_thanh_pho','dia_chi_giao_hang.TTP_MA','=','tinh_thanh_pho.TTP_MA')
+        ->where('dia_chi_giao_hang.DCGH_MA', $request->DCGH_MA)->first();
+
+        $now = Carbon::now('Asia/Ho_Chi_Minh');
+        $date = $now->format('Y-m-d_H-i-s');
+
+        $data = array();
+
+        $data['HTTT_MA'] = $request->HTTT_MA;
+        $data['DCGH_MA'] = $request->DCGH_MA;
+        $data['TT_MA'] = 1;
+        $data['DDH_NGAYDAT'] = $now;
+        $data['DDH_TONGTIEN'] =  $request->DDH_TONGTIEN+$DCGH->TTP_CHIPHIGIAOHANG;
+        $data['DDH_PHISHIPTHUCTE'] = $DCGH->TTP_CHIPHIGIAOHANG;
+        $data['DDH_THUEVAT'] = $request->DDH_THUEVAT;
+        //$data['DDH_DUONGDANHINHANHCHUYENKHOAN'] = $request->DDH_DUONGDANHINHANHCHUYENKHOAN;
+        
+        $get_image= $request->file('DDH_DUONGDANHINHANHCHUYENKHOAN');
+
+        if ($request->HTTT_MA != 1 && $request->DDH_DUONGDANHINHANHCHUYENKHOAN ==NULL){
+            Session::put('message','Thiếu ảnh minh chứng, đặt hàng thất bại');
+            return Redirect::to('show-cart')->send();
+        }
+        else if ($request->HTTT_MA == 1 && $request->DDH_DUONGDANHINHANHCHUYENKHOAN !=NULL){
+            $data['DDH_DUONGDANHINHANHCHUYENKHOAN'] = NULL;
+            $get_image = NULL;
+        }
+
+        if($get_image){
+            $new_image =  $KH_MA.'_'.$date.'.'.$get_image->getClientOriginalExtension();
+            $get_image->move('public/frontend/img/minhchung',$new_image);
+            $data['DDH_DUONGDANHINHANHCHUYENKHOAN'] = $new_image;
+        }
+
+        DB::table('don_dat_hang')->insert($data);
+
+        // Truy vấn dữ liệu
+        $CTGH = DB::table('chi_tiet_gio_hang')
+        ->join('noi_that','noi_that.NT_MA','=','chi_tiet_gio_hang.NT_MA')
+        ->join('hinh_anh_noi_that','noi_that.NT_MA','=','hinh_anh_noi_that.NT_MA')
+        ->join('gio_hang','chi_tiet_gio_hang.GH_MA','=','gio_hang.GH_MA')
+        ->join('khach_hang','khach_hang.KH_MA','=','gio_hang.KH_MA')
+        ->where('hinh_anh_noi_that.HANT_DUONGDAN', 'like', '%-1%')
+        ->where('khach_hang.KH_MA', $KH_MA)->get();
+        
+        //echo '<pre>';
+        $DDH_MA=DB::table('don_dat_hang')
+        ->orderby('don_dat_hang.DDH_MA','desc')->first();
+        $data2 = array();
+        // Lấy từng dòng và hiển thị
+        $all_cart_product = DB::table('gio_hang')
+        ->join('khach_hang','gio_hang.KH_MA','=','khach_hang.KH_MA')
+        ->where('khach_hang.KH_MA', $KH_MA)->first();
+        foreach ($CTGH as $row) {
+            $data2['DDH_MA'] = $DDH_MA->DDH_MA;
+            $data2['NT_MA'] = $row->NT_MA;
+            $data2['CTDDH_SOLUONG'] = $row->CTGH_SOLUONG;
+            $data2['CTDDH_DONGIA'] = $row->NT_GIA;
+            //print_r ($data2);
+            DB::table('chi_tiet_don_dat_hang')->insert($data2);
+            DB::table('chi_tiet_gio_hang')->where('GH_MA', $all_cart_product->GH_MA)->where('NT_MA',$row->NT_MA)->delete();
+        }
+
+        Session::put('message','Đặt hàng thành công!');
+        return Redirect::to('show-cart');
+    }
+
+    //TTìm kiếm nội thất trong đơn đặt hàng
+    public function search_in_order(Request $request){
+        $this->AuthLogin();
+        $KH_MA = Session::get('KH_MA');
+
+        $keywords = $request ->keywords_submit;
+
+        $all_category_product = DB::table('loai_noi_that')->get();
+        /*$all_DDH=  DB::table('don_dat_hang')->where('don_dat_hang.KH_MA', $KH_MA)->get();
+        $group_DDH = DB::table('don_dat_hang')
+        ->join('chi_tiet_don_dat_hang','don_dat_hang.DDH_MA','=','chi_tiet_don_dat_hang.DDH_MA')
+        ->join('noi_that','noi_that.NT_MA','=','chi_tiet_don_dat_hang.NT_MA')
+        ->where('don_dat_hang.KH_MA', $KH_MA)
+        ->where('noi_that.NT_TEN', 'like', '%'.$keywords.'%')->get();*/
+
+        $all_DDH=  DB::table('don_dat_hang')
+        ->join('trang_thai','don_dat_hang.TT_MA','=','trang_thai.TT_MA')
+        ->join('chi_tiet_don_dat_hang','don_dat_hang.DDH_MA','=','chi_tiet_don_dat_hang.DDH_MA')
+        ->join('noi_that','noi_that.NT_MA','=','chi_tiet_don_dat_hang.NT_MA')
+        ->join('dia_chi_giao_hang','dia_chi_giao_hang.DCGH_MA','=','don_dat_hang.DCGH_MA')
+        ->where('dia_chi_giao_hang.KH_MA', $KH_MA)
+        ->where('noi_that.NT_TEN', 'like', '%'.$keywords.'%')
+        ->orderby('don_dat_hang.DDH_NGAYDAT','desc')->get();
+        
+        $group_DDH = DB::table('don_dat_hang')
+        ->join('chi_tiet_don_dat_hang','don_dat_hang.DDH_MA','=','chi_tiet_don_dat_hang.DDH_MA')
+        ->join('noi_that','noi_that.NT_MA','=','chi_tiet_don_dat_hang.NT_MA')
+        ->join('dia_chi_giao_hang','dia_chi_giao_hang.DCGH_MA','=','don_dat_hang.DCGH_MA')
+        ->where('dia_chi_giao_hang.KH_MA', $KH_MA)->get();
+
+        return view('pages.cart.search_in_order')->with('category', $all_category_product)
+        ->with('all_DDH', $all_DDH)->with('group_DDH', $group_DDH);
+    }
+
+    public function cancel_order($DDH_MA){
+        $this->AuthLogin();
+        
+        $data = array();
+        $data['TT_MA'] = 5;
+
+        DB::table('don_dat_hang')->where('DDH_MA', $DDH_MA)->update($data);
+        Session::put('message','Huỷ đơn hàng thành công');
+        
+        return Redirect::to('show-detail-bill/'.$DDH_MA);
     }
 }
