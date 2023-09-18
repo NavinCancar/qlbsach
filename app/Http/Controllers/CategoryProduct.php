@@ -50,18 +50,18 @@ class CategoryProduct extends Controller
 
     public function add_category_product(){
         $this->AuthLoginChu();
-        return view('admin.add_category_product');
+        return view('admin.category.add_category_product');
 
     }
 
     public function all_category_product(){ //Hien thi tat ca
         $this->AuthLoginChu();
         $all_category_product = DB::table('the_loai_sach')->paginate(10);
-        $manager_category_product = view('admin.all_category_product')->with('all_category_product', $all_category_product);
+        $manager_category_product = view('admin.category.all_category_product')->with('all_category_product', $all_category_product);
                 
         $count_category_product = DB::table('the_loai_sach')->count('TLS_MA');
         Session::put('count_category_product',$count_category_product);
-        return view('admin-layout')->with('admin.all_category_product', $manager_category_product);
+        return view('admin-layout')->with('admin.category.all_category_product', $manager_category_product);
     }
 
     public function save_category_product(Request $request){
@@ -86,9 +86,9 @@ class CategoryProduct extends Controller
     public function edit_category_product($TLS_MA){
         $this->AuthLoginChu();
         $edit_category_product = DB::table('the_loai_sach')->where('TLS_MA',$TLS_MA)->get();
-        $manager_category_product = view('admin.edit_category_product')->with('edit_category_product', $edit_category_product);
-        //!!!return view('admin-layout-detail')->with('admin.edit_category_product', $manager_category_product);
-        return view('admin-layout')->with('admin.edit_category_product', $manager_category_product);
+        $manager_category_product = view('admin.category.edit_category_product')->with('edit_category_product', $edit_category_product);
+        //!!!return view('admin-layout-detail')->with('admin.category.edit_category_product', $manager_category_product);
+        return view('admin-layout')->with('admin.category.edit_category_product', $manager_category_product);
     }
 
     public function update_category_product(Request $request, $TLS_MA){

@@ -25,38 +25,43 @@
     <div class="d-flex" id="wrapper">
         <!-- Sidebar -->
         <div class="bg-white" id="sidebar-wrapper">
-            <div class="sidebar-heading text-center py-4 primary-text fs-2 fw-bold text-uppercase border-bottom">
+            <div class="sidebar-heading text-center py-3 primary-text fs-2 fw-bold text-uppercase border-bottom">
                 <img src="{{asset('./public/frontend/images/logo-small.png')}}" width="150px">
             </div>
-            <div class="list-group list-group-flush my-3">
+            <div class="list-group list-group-flush mb-3">
                 <div id="accordion">
                     <div class="card">
                         <a href="{{URL::to('/dashboard')}}" class="list-group-item list-group-item-action bg-transparent primary-text fw-bold">
-                            <i class="fas fa-tachometer-alt me-2"></i>Dashboard
+                            <i class="fas fa-tachometer-alt me-2"></i>Tổng quan
                         </a>
-                        <!--Sách-->
+                        <!--1. Sách-->
                         <div class="card-header">
                             <a class="btn list-group-item list-group-item-action bg-transparent primary-text fw-bold"
-                                data-bs-toggle="collapse" href="#collapse1">
+                                 onclick="toggleCollapse('collapse1')">
                                 <i class="fas fa-book me-2"></i>Sách
                             </a>
                         </div>
                         <div id="collapse1" class="collapse" data-bs-parent="#accordion">
                             <div class="card-body">
-                                <a href="{{URL::to('/add-product')}}"
+                                <a href="{{URL::to('/???P')}}"
                                     class="list-group-item list-group-item-action bg-transparent primary-text fw-bold">
-                                    Thêm sách
+                                    - Thêm sách
                                 </a>
-                                <a href="{{URL::to('/all-product')}}"
+                                <a href="{{URL::to('/???P')}}"
+                                    class="list-group-item list-group-item-action bg-transparent primary-text fw-bold line">
+                                    - Danh sách sách
+                                </a>
+                                <a href="{{URL::to('/???H')}}"
                                     class="list-group-item list-group-item-action bg-transparent primary-text fw-bold">
-                                    Danh sách sách
+                                    - Xử lý đánh giá sách
                                 </a>
                             </div>
                         </div>
-                        <!--Thể loại sách-->
+
+                        <!--2. Thể loại sách-->
                         <div class="card-header">
                             <a class="btn list-group-item list-group-item-action bg-transparent primary-text fw-bold"
-                                data-bs-toggle="collapse" href="#collapse2">
+                                onclick="toggleCollapse('collapse2')">
                                 <i class="fas fa-swatchbook me-2"></i>Thể loại sách
                             </a>
                         </div>
@@ -64,16 +69,159 @@
                             <div class="card-body">
                                 <a href="{{URL::to('/add-category-product')}}"
                                     class="list-group-item list-group-item-action bg-transparent primary-text fw-bold">
-                                    Thêm thể loại sách
+                                    - Thêm thể loại sách
                                 </a>
                                 <a href="{{URL::to('/all-category-product')}}"
                                     class="list-group-item list-group-item-action bg-transparent primary-text fw-bold">
-                                    Danh sách thể loại sách
+                                    - Danh sách thể loại sách
                                 </a>
                             </div>
                         </div>
 
-                        <a href="{{URL::to('/thong-ke')}}"
+                        
+                        <!--3. Nhà xuất bản-->
+                        <div class="card-header">
+                            <a class="btn list-group-item list-group-item-action bg-transparent primary-text fw-bold"
+                                onclick="toggleCollapse('collapse3')">
+                                <i class="fas fa-kaaba me-2"></i>Nhà xuất bản
+                            </a>
+                        </div>
+                        <div id="collapse3" class="collapse" data-bs-parent="#accordion">
+                            <div class="card-body">
+                                <a href="{{URL::to('/???K')}}"
+                                    class="list-group-item list-group-item-action bg-transparent primary-text fw-bold">
+                                    - Thêm nhà xuất bản
+                                </a>
+                                <a href="{{URL::to('/???K')}}"
+                                    class="list-group-item list-group-item-action bg-transparent primary-text fw-bold">
+                                    - Danh sách nhà xuất bản
+                                </a>
+                            </div>
+                        </div>
+
+                        <!--4. Tác giả-->
+                        <div class="card-header">
+                            <a class="btn list-group-item list-group-item-action bg-transparent primary-text fw-bold"
+                                onclick="toggleCollapse('collapse4')">
+                                <i class="fas fa-user-edit me-2"></i>Tác giả
+                            </a>
+                        </div>
+                        <div id="collapse4" class="collapse" data-bs-parent="#accordion">
+                            <div class="card-body">
+                                <a href="{{URL::to('/???H')}}"
+                                    class="list-group-item list-group-item-action bg-transparent primary-text fw-bold">
+                                    - Thêm tác giả
+                                </a>
+                                <a href="{{URL::to('/???H')}}"
+                                    class="list-group-item list-group-item-action bg-transparent primary-text fw-bold">
+                                    - Danh sách tác giả
+                                </a>
+                            </div>
+                        </div>
+
+                        <!--5. Đơn đặt hàng-->
+                        <a href="{{URL::to('/???P')}}"
+                            class="list-group-item list-group-item-action bg-transparent primary-text fw-bold">
+                            <i class="fas fa-file-alt me-2"></i>Đơn đặt hàng
+                        </a>
+
+                        <!--6. Quản lý lô-->
+                        <div class="card-header">
+                            <a class="btn list-group-item list-group-item-action bg-transparent primary-text fw-bold"
+                                onclick="toggleCollapse('collapse6')">
+                                <i class="fas fa-dolly-flatbed me-2"></i>Lô nhập - lô xuất
+                            </a>
+                        </div>
+                        <div id="collapse6" class="collapse" data-bs-parent="#accordion">
+                            <div class="card-body">
+                                <a href="{{URL::to('/???')}}"
+                                    class="list-group-item list-group-item-action bg-transparent primary-text fw-bold line">
+                                    - Danh sách tồn kho
+                                </a>
+                                <a href="{{URL::to('/???')}}"
+                                    class="list-group-item list-group-item-action bg-transparent primary-text fw-bold">
+                                    - Thêm lô nhập
+                                </a>
+                                <a href="{{URL::to('/???')}}"
+                                    class="list-group-item list-group-item-action bg-transparent primary-text fw-bold line">
+                                    - Danh sách lô nhập
+                                </a>
+                                <a href="{{URL::to('/???')}}"
+                                    class="list-group-item list-group-item-action bg-transparent primary-text fw-bold">
+                                    - Thêm lô xuất
+                                </a>
+                                <a href="{{URL::to('/???')}}"
+                                    class="list-group-item list-group-item-action bg-transparent primary-text fw-bold">
+                                    - Danh sách lô xuất
+                                </a>
+                            </div>
+                        </div>
+
+                        <!--7. Quản lý tài khoản-->
+                        <div class="card-header">
+                            <a class="btn list-group-item list-group-item-action bg-transparent primary-text fw-bold"
+                                onclick="toggleCollapse('collapse7')">
+                                <i class="fas fa-user me-2"></i>Tài khoản
+                            </a>
+                        </div>
+                        <div id="collapse7" class="collapse" data-bs-parent="#accordion">
+                            <div class="card-body">
+                                <a href="{{URL::to('/???H')}}"
+                                    class="list-group-item list-group-item-action bg-transparent primary-text fw-bold">
+                                    - Thêm chức vụ
+                                </a>
+                                <a href="{{URL::to('/???H')}}"
+                                    class="list-group-item list-group-item-action bg-transparent primary-text fw-bold line">
+                                    - Danh sách chức vụ
+                                </a>
+                                <a href="{{URL::to('/???P')}}"
+                                    class="list-group-item list-group-item-action bg-transparent primary-text fw-bold">
+                                    - Thêm nhân viên
+                                </a>
+                                <a href="{{URL::to('/???P')}}"
+                                    class="list-group-item list-group-item-action bg-transparent primary-text fw-bold line">
+                                    - Danh sách nhân viên
+                                </a>
+                                <a href="{{URL::to('/???H')}}"
+                                    class="list-group-item list-group-item-action bg-transparent primary-text fw-bold">
+                                    - Quản lý khách hàng
+                                </a>
+                            </div>
+                        </div>
+
+                        <!--8. Khác-->
+                        <div class="card-header">
+                            <a class="btn list-group-item list-group-item-action bg-transparent primary-text fw-bold"
+                                onclick="toggleCollapse('collapse8')">
+                                <i class="fas fa-ellipsis-h me-2"></i>Khác
+                            </a>
+                        </div>
+                        <div id="collapse8" class="collapse" data-bs-parent="#accordion">
+                            <div class="card-body">
+                                <a href="{{URL::to('/???K')}}"
+                                    class="list-group-item list-group-item-action bg-transparent primary-text fw-bold">
+                                    - Thêm trạng thái
+                                </a>
+                                <a href="{{URL::to('/???K')}}"
+                                    class="list-group-item list-group-item-action bg-transparent primary-text fw-bold line">
+                                    - Danh sách trạng thái
+                                </a>
+                                <a href="{{URL::to('/???K')}}"
+                                    class="list-group-item list-group-item-action bg-transparent primary-text fw-bold">
+                                    - Thêm hình thức thanh toán
+                                </a>
+                                <a href="{{URL::to('/???K')}}"
+                                    class="list-group-item list-group-item-action bg-transparent primary-text fw-bold line">
+                                    - Danh sách hình thức thanh toán
+                                </a>
+                                <a href="{{URL::to('/???K')}}"
+                                    class="list-group-item list-group-item-action bg-transparent primary-text fw-bold">
+                                    - Quản lý phí ship
+                                </a>
+                            </div>
+                        </div>
+
+                        <a href="{{URL::to('/???P')}}"
                             class="list-group-item list-group-item-action bg-transparent primary-text fw-bold">
                             <i class="fas fa-chart-bar me-2"></i>Thống kê
                         </a>
@@ -160,5 +308,16 @@
         };
     </script>
 </body>
+<script>
+  function toggleCollapse(collapseId) {
+    var collapse = document.getElementById(collapseId);
+    var isExpanded = collapse.classList.contains('show');
 
+    if (isExpanded) {
+      collapse.classList.remove('show');
+    } else {
+      collapse.classList.add('show');
+    }
+  }
+</script>
 </html>
