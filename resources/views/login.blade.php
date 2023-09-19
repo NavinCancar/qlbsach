@@ -10,7 +10,7 @@
         <div class="row">
           <!--ĐĂNG NHẬP-->
           <div class="col-sm-5 col-sm-offset-1">
-            <div class="login-form">
+            <div class="login-form row">
               <h2 class="h2 section-title has-underline">
                 Đăng nhập
                 <span class="dis-block has-before"></span>
@@ -18,7 +18,7 @@
               <?php
                     $messagedn= Session::get('messagedn');
                     if($messagedn){
-                    echo '<span class="text-warning">'. $messagedn .'</span>';
+                    echo '<span class="text-notice">'. $messagedn .'</span>';
                         Session::put('messagedn', null);
                     }
                ?>
@@ -36,7 +36,7 @@
           </div>
           <!--ĐĂNG KÝ-->
           <div class="col-sm-5">
-            <div class="signup-form">
+            <div class="signup-form row">
               <h2 class="h2 section-title has-underline">
                 Đăng ký
                 <span class="dis-block has-before"></span>
@@ -44,7 +44,7 @@
               <?php
                     $messagedk= Session::get('messagedk');
                     if($messagedk){
-                    echo '<span class="text-warning">'. $messagedk .'</span>';
+                    echo '<span class="text-notice">'. $messagedk .'</span>';
                         Session::put('messagedk', null);
                     }
                ?>

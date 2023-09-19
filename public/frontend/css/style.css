@@ -10,6 +10,7 @@
   --light-gray: #cccccc;
   --blue: #6586e6;
   --light-blue: #cfebfc;
+  --light-light-blue: #dff2fd85;
   --dark-blue: #0f2464;
   --white: #ffffff;
   --gold: #ffd700;
@@ -207,6 +208,7 @@ body {
 
 .btn {
   padding: 6px 15px;
+  font-size: var(--fs-8);
   transition: var(--transition-2);
 }
 
@@ -628,7 +630,7 @@ containerro
 }
 
 .primary-table td{
-  padding-top: 30px ;
+  vertical-align: middle;
   text-align: center;
   font-size: var(--fs-7);
 }
@@ -817,4 +819,76 @@ fieldset input[type="radio"]:checked ~ label:before {
 \*-----------------------------------*/
 .form-control {
   font-size: inherit;
+}
+
+.text-notice {
+  color: var(--dark-blue) !important;
+  background-color: var(--blue-clear);
+  border-radius: 20px;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  animation: slideInRight 0.5s forwards;
+  opacity: 0;
+}
+
+@keyframes slideInRight {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.text-notice::before {
+  content: "\f27a";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 400;
+  font-size: 16px;
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: var(--blue-clear);
+}
+
+.text-notice::before {
+  color: var(--dark-blue);
+}
+
+.position-center {
+  width:76%;
+  margin: 0 auto;
+}
+
+.input-form{
+  background-color: var(--light-light-blue);
+  padding: 3.5% 5%;
+  border-radius: 10px;
+  color: var(--dark-blue);
+  margin-top: 10px;
+}
+
+.input-form .form-group {
+  padding-bottom: 15px;
+}
+
+.input-form .form-group label {
+  padding-bottom: 3px;
+}
+
+.form-control:disabled, .form-control[readonly] {
+  background-color: #f5faff;
+  opacity: 1;
 }

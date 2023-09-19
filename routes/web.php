@@ -41,31 +41,31 @@ Route::get('/show-cart','App\Http\Controllers\CartController@show_cart'); ///ok
 Route::post('/update-cart', 'App\Http\Controllers\CartController@update_cart'); ///ok
 Route::get('/delete-cart/{SACH_MA}', 'App\Http\Controllers\CartController@delete_cart'); ///ok
 
-//Location???
-Route::get('/dia-chi-giao-hang','App\Http\Controllers\CostumerController@all_location');
-Route::get('/them-dia-chi-giao-hang','App\Http\Controllers\CostumerController@add_location');
-Route::get('/sua-dia-chi-giao-hang/{DCGH_MA}', 'App\Http\Controllers\CostumerController@edit_location');
-Route::get('/xoa-dia-chi-giao-hang/{DCGH_MA}', 'App\Http\Controllers\CostumerController@delete_location');
+//Location
+Route::get('/dia-chi-giao-hang','App\Http\Controllers\CostumerController@all_location'); ///ok
+Route::get('/them-dia-chi-giao-hang','App\Http\Controllers\CostumerController@add_location'); ///ok
+Route::get('/sua-dia-chi-giao-hang/{DCGH_MA}', 'App\Http\Controllers\CostumerController@edit_location'); ///ok
+Route::get('/xoa-dia-chi-giao-hang/{DCGH_MA}', 'App\Http\Controllers\CostumerController@delete_location'); ///ok
 
-Route::post('/save-location', 'App\Http\Controllers\CostumerController@save_location');
-Route::post('/update-location/{DCGH_MA}', 'App\Http\Controllers\CostumerController@update_location');
+Route::post('/save-location', 'App\Http\Controllers\CostumerController@save_location'); ///ok
+Route::post('/update-location/{DCGH_MA}', 'App\Http\Controllers\CostumerController@update_location'); ///ok
 
 //Don dat hang
-Route::get('/show-all-bill','App\Http\Controllers\CartController@show_all_bill');
-Route::get('/show-detail-bill/{DDH_MA}','App\Http\Controllers\CartController@show_detail_bill');
-Route::get('/show-detail-order','App\Http\Controllers\CartController@show_detail_order');
-Route::get('/huy-don/{DDH_MA}','App\Http\Controllers\CartController@cancel_order'); 
+Route::get('/show-all-bill','App\Http\Controllers\CartController@show_all_bill'); ///ok
+Route::get('/show-detail-bill/{DDH_MA}','App\Http\Controllers\CartController@show_detail_bill'); ///ok
+Route::get('/show-detail-order','App\Http\Controllers\CartController@show_detail_order'); ///ok
+Route::get('/huy-don/{DDH_MA}','App\Http\Controllers\CartController@cancel_order'); ///ok
 
-Route::post('/order','App\Http\Controllers\CartController@order');
-Route::post('/search-in-order', 'App\Http\Controllers\CartController@search_in_order');
+Route::post('/order','App\Http\Controllers\CartController@order'); ///ok
+Route::post('/search-in-order', 'App\Http\Controllers\CartController@search_in_order'); ///ok
 
 //Account
-Route::get('/tai-khoan', 'App\Http\Controllers\CostumerController@show_account');
-Route::get('/cap-nhat-tai-khoan', 'App\Http\Controllers\CostumerController@edit_account');
-Route::get('/doi-mat-khau', 'App\Http\Controllers\CostumerController@change_password_account');
+Route::get('/tai-khoan', 'App\Http\Controllers\CostumerController@show_account'); ///ok
+Route::get('/cap-nhat-tai-khoan', 'App\Http\Controllers\CostumerController@edit_account'); ///ok
+Route::get('/doi-mat-khau', 'App\Http\Controllers\CostumerController@change_password_account'); ///ok
 
-Route::post('/update-tai-khoan', 'App\Http\Controllers\CostumerController@update_account');
-Route::post('/update-mat-khau', 'App\Http\Controllers\CostumerController@update_password_account');
+Route::post('/update-tai-khoan', 'App\Http\Controllers\CostumerController@update_account');///ok
+Route::post('/update-mat-khau', 'App\Http\Controllers\CostumerController@update_password_account'); ///ok
 //---------------------------------------------------
 
 
@@ -89,10 +89,10 @@ Route::post('/save-category-product', 'App\Http\Controllers\CategoryProduct@save
 Route::post('/update-category-product/{TLS_MA}', 'App\Http\Controllers\CategoryProduct@update_category_product'); ///ok
 
 //Author: Tác giả
-Route::get('/add-author', 'App\Http\Controllers\AuthorController@add_author'); ///
-Route::get('/edit-author/{TLS_MA}', 'App\Http\Controllers\AuthorController@edit_author'); ///
-Route::get('/delete-author/{TLS_MA}', 'App\Http\Controllers\AuthorController@delete_author'); ///
-Route::get('/all-author', 'App\Http\Controllers\AuthorController@all_author'); ///
+Route::get('/add-author', 'App\Http\Controllers\AuthorController@add_author'); ///ok
+Route::get('/edit-author/{TLS_MA}', 'App\Http\Controllers\AuthorController@edit_author'); ///ok
+Route::get('/delete-author/{TLS_MA}', 'App\Http\Controllers\AuthorController@delete_author'); ///ok
+Route::get('/all-author', 'App\Http\Controllers\AuthorController@all_author'); ///ok
 
-Route::post('/save-author', 'App\Http\Controllers\AuthorController@save_author'); ///
-Route::post('/update-author/{TLS_MA}', 'App\Http\Controllers\AuthorController@update_author'); ///
+Route::post('/save-author', 'App\Http\Controllers\AuthorController@save_author'); ///ok
+Route::post('/update-author/{TLS_MA}', 'App\Http\Controllers\AuthorController@update_author'); ///ok

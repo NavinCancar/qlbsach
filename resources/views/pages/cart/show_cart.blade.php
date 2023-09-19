@@ -15,7 +15,7 @@
           <?php
             $message = Session::get('message');
             if($message){
-                echo '<span class="text-warning">'.$message.'</span>';
+                echo '<span class="text-notice">'.$message.'</span>';
                 Session::put('message',null);
             }
           ?>

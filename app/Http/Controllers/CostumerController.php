@@ -123,14 +123,14 @@ class CostumerController extends Controller
     }
 
 /*-----------------------------------*\
-  #FRONTEND <FOR KHÁCH THÀNH VIÊN>???
+  #FRONTEND <FOR KHÁCH THÀNH VIÊN>
 \*-----------------------------------*/
 
     //Location
     public function all_location(){
         $this->AuthLogin();
         $KH_MA = Session::get('KH_MA');
-        $all_category_product = DB::table('loai_noi_that')->get();
+        $all_category_product = DB::table('the_loai_sach')->get();
         $all_DCGH = DB::table('dia_chi_giao_hang')
         ->join('tinh_thanh_pho','dia_chi_giao_hang.TTP_MA','=','tinh_thanh_pho.TTP_MA')
         ->where('dia_chi_giao_hang.KH_MA',$KH_MA)
@@ -146,7 +146,7 @@ class CostumerController extends Controller
     public function add_location(){
         $this->AuthLogin();
         $KH_MA = Session::get('KH_MA');
-        $all_category_product = DB::table('loai_noi_that')->get();
+        $all_category_product = DB::table('the_loai_sach')->get();
 
         $ttp= DB::table('tinh_thanh_pho')->orderby('TTP_TEN')->get();
         
@@ -172,7 +172,7 @@ class CostumerController extends Controller
     public function edit_location($DCGH_MA){
         $this->AuthLogin();
         $KH_MA = Session::get('KH_MA');
-        $all_category_product = DB::table('loai_noi_that')->get();
+        $all_category_product = DB::table('the_loai_sach')->get();
 
         $ttp= DB::table('tinh_thanh_pho')->orderby('TTP_TEN')->get();
         $edit_location = DB::table('dia_chi_giao_hang')
@@ -217,7 +217,7 @@ class CostumerController extends Controller
     public function show_account(){
         $this->AuthLogin();
         $KH_MA = Session::get('KH_MA');
-        $all_category_product = DB::table('loai_noi_that')->get();
+        $all_category_product = DB::table('the_loai_sach')->get();
         $account_info = DB::table('khach_hang')->where('KH_MA',$KH_MA)->get();
         
         return view('pages.account.show_account')
@@ -227,7 +227,7 @@ class CostumerController extends Controller
     public function edit_account(){
         $this->AuthLogin();
         $KH_MA = Session::get('KH_MA');
-        $all_category_product = DB::table('loai_noi_that')->get();
+        $all_category_product = DB::table('the_loai_sach')->get();
         $account_info = DB::table('khach_hang')->where('KH_MA',$KH_MA)->get();
         
         return view('pages.account.edit_account')
@@ -251,7 +251,7 @@ class CostumerController extends Controller
             $name_image = current(explode('.',$get_name_image));
 
             $new_image =  $KH_MA.'.'.$get_image->getClientOriginalExtension();
-            $get_image->move('public/frontend/img/khachhang',$new_image);
+            $get_image->move('public/frontend/images/khachhang',$new_image);
             $data['KH_DUONGDANANHDAIDIEN'] = $new_image;
         }
         
@@ -276,7 +276,7 @@ class CostumerController extends Controller
     //Mật khẩu
     public function change_password_account(){
         $this->AuthLogin();
-        $all_category_product = DB::table('loai_noi_that')->get();
+        $all_category_product = DB::table('the_loai_sach')->get();
         return view('pages.account.change_password_account')->with('category', $all_category_product);
     }
 

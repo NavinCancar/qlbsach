@@ -10,7 +10,7 @@
             <div class="col-lg-5 col-md-12 col-12 pb-5">
                 <img class="img-fluid w-100 pb-1" id="MainImg" src="../public/frontend/images/sach/{{$value->SACH_DUONGDANANHBIA}}" alt="">
             </div>
-            <div class="col-lg-7 col-md-12 col-12">
+            <div class="col-lg-7 col-md-12 col-12 row">
                 <h2 class="h2 section-title has-underline">
                 {{$value->SACH_TEN}}
                 <span class="dis-block has-before"></span>
@@ -39,6 +39,13 @@
                         }
                     ?>
                 </div>
+                <?php
+                    $message = Session::get('message');
+                    if($message){
+                        echo '<span class="text-notice">'.$message.'</span>';
+                        Session::put('message',null);
+                    }
+                ?>
                 <p class="product-detail-inf"><span class="product-detail-title">Tác giả: </span>
                 &emsp;<span>
                 @foreach($author_product as $key => $au)
@@ -58,7 +65,6 @@
                 <?php
                     $ton = Session::get('ton');
                 ?>
-
                 <form action="{{URL::to('/save-cart')}}" method="POST">
                 {{ csrf_field() }}
                     <p class="product-detail-inf"><span class="product-detail-title">Số lượng: </span>
@@ -66,6 +72,8 @@
                         &emsp;<span class="product-detail-title">Số lượng tồn: </span>
                             <?php
                                 echo $ton;
+                                $dis=1;
+                                if ($ton == 0) $dis=0;
                                 Session::put('ton',null);
                             ?> |
                         &emsp;<span class="product-detail-title">Đã bán: </span>
@@ -76,15 +84,12 @@
                         ?> |
                     </p>
                     <input name="productid_hidden" type="hidden"  value="{{$value->SACH_MA}}" />
-                    <button type="submit" class="btn btn-primary product-detail-btn">THÊM GIỎ HÀNG</button>
+                    <?php
+                        if ($ton == 0) echo '<button type="submit" class="btn btn-primary product-detail-btn disabled ">HẾT HÀNG</button>';
+                        else echo '<button type="submit" class="btn btn-primary product-detail-btn">THÊM GIỎ HÀNG</button>';
+                    ?>
+                    
                 </form>
-                <?php
-                    $message = Session::get('message');
-                    if($message){
-                        echo '<span class="text-warning">'.$message.'</span>';
-                        Session::put('message',null);
-                    }
-                ?>
                 </p>
                 <br>
                 <h2 class="has-underline"><span class="dis-block has-before"></span></h2>
