@@ -87,3 +87,12 @@ Route::get('/all-category-product', 'App\Http\Controllers\CategoryProduct@all_ca
 
 Route::post('/save-category-product', 'App\Http\Controllers\CategoryProduct@save_category_product'); ///ok
 Route::post('/update-category-product/{TLS_MA}', 'App\Http\Controllers\CategoryProduct@update_category_product'); ///ok
+
+//Author: Tác giả
+Route::get('/add-author', 'App\Http\Controllers\AuthorController@add_author'); ///
+Route::get('/edit-author/{TLS_MA}', 'App\Http\Controllers\AuthorController@edit_author'); ///
+Route::get('/delete-author/{TLS_MA}', 'App\Http\Controllers\AuthorController@delete_author'); ///
+Route::get('/all-author', 'App\Http\Controllers\AuthorController@all_author'); ///
+
+Route::post('/save-author', 'App\Http\Controllers\AuthorController@save_author'); ///
+Route::post('/update-author/{TLS_MA}', 'App\Http\Controllers\AuthorController@update_author'); ///

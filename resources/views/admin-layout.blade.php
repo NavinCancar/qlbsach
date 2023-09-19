@@ -78,7 +78,6 @@
                             </div>
                         </div>
 
-                        
                         <!--3. Nhà xuất bản-->
                         <div class="card-header">
                             <a class="btn list-group-item list-group-item-action bg-transparent primary-text fw-bold"
@@ -108,11 +107,11 @@
                         </div>
                         <div id="collapse4" class="collapse" data-bs-parent="#accordion">
                             <div class="card-body">
-                                <a href="{{URL::to('/???H')}}"
+                                <a href="{{URL::to('/add-author')}}"
                                     class="list-group-item list-group-item-action bg-transparent primary-text fw-bold">
                                     - Thêm tác giả
                                 </a>
-                                <a href="{{URL::to('/???H')}}"
+                                <a href="{{URL::to('/all-author')}}"
                                     class="list-group-item list-group-item-action bg-transparent primary-text fw-bold">
                                     - Danh sách tác giả
                                 </a>
