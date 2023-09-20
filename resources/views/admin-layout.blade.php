@@ -165,11 +165,11 @@
                         </div>
                         <div id="collapse7" class="collapse" data-bs-parent="#accordion">
                             <div class="card-body">
-                                <a href="{{URL::to('/???H')}}"
+                                <a href="{{URL::to('/add-chuc-vu')}}"
                                     class="list-group-item list-group-item-action bg-transparent primary-text fw-bold">
                                     - Thêm chức vụ
                                 </a>
-                                <a href="{{URL::to('/???H')}}"
+                                <a href="{{URL::to('/all-chuc-vu')}}"
                                     class="list-group-item list-group-item-action bg-transparent primary-text fw-bold line">
                                     - Danh sách chức vụ
                                 </a>

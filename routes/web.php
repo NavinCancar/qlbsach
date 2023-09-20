@@ -98,6 +98,15 @@ Route::post('/save-author', 'App\Http\Controllers\AuthorController@save_author')
 Route::post('/update-author/{TLS_MA}', 'App\Http\Controllers\AuthorController@update_author'); ///ok
 
 
+//chức vụ
+Route::get('/add-chuc-vu', 'App\Http\Controllers\Chucvu@add_chuc_vu'); ///ok
+Route::get('/edit-chuc-vu/{CV_MA}', 'App\Http\Controllers\Chucvu@edit_chuc_vu'); ///ok
+Route::get('/delete-chuc-vu/{CV_MA}', 'App\Http\Controllers\Chucvu@delete_chuc_vu'); ///ok
+Route::get('/all-chuc-vu', 'App\Http\Controllers\Chucvu@all_chuc_vu'); ///ok
+
+Route::post('/save-chuc-vu', 'App\Http\Controllers\Chucvu@save_chuc_vu'); ///ok
+Route::post('/update-chuc-vu/{CV_MA}', 'App\Http\Controllers\Chucvu@update_chuc_vu'); ///ok
+
 
 
 
