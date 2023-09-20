@@ -137,19 +137,19 @@
                                     class="list-group-item list-group-item-action bg-transparent primary-text fw-bold line">
                                     - Danh sách tồn kho
                                 </a>
-                                <a href="{{URL::to('/???')}}"
+                                <a href="{{URL::to('/add-lo-nhap')}}"
                                     class="list-group-item list-group-item-action bg-transparent primary-text fw-bold">
                                     - Thêm lô nhập
                                 </a>
-                                <a href="{{URL::to('/???')}}"
+                                <a href="{{URL::to('/all-lo-nhap')}}"
                                     class="list-group-item list-group-item-action bg-transparent primary-text fw-bold line">
                                     - Danh sách lô nhập
                                 </a>
-                                <a href="{{URL::to('/???')}}"
+                                <a href="{{URL::to('/add-lo-xuat')}}"
                                     class="list-group-item list-group-item-action bg-transparent primary-text fw-bold">
                                     - Thêm lô xuất
                                 </a>
-                                <a href="{{URL::to('/???')}}"
+                                <a href="{{URL::to('/all-lo-xuat')}}"
                                     class="list-group-item list-group-item-action bg-transparent primary-text fw-bold">
                                     - Danh sách lô xuất
                                 </a>

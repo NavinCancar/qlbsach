@@ -12,26 +12,6 @@ use Illuminate\Http\Request;
 
 class Chucvu extends Controller
 {
-
-/*-----------------------------------*\
-  #FRONTEND
-\*-----------------------------------*/
-
-    // Danh mục sản phẩm trang chủ
-    public function show_category_home($CV_MA){ ///ok
-        $all_chuc_vu = DB::table('chuc_vu')->get();
-
-        $category_by_id = DB::table('sach')
-        ->join('thuoc_the_loai', 'sach.SACH_MA', '=', 'thuoc_the_loai.SACH_MA')
-        ->join('chuc_vu', 'chuc_vu.CV_MA', '=', 'thuoc_the_loai.CV_MA')
-        ->orderby('sach.SACH_NGAYTAO','desc')->where('chuc_vu.CV_MA', $CV_MA)->paginate(16);
-
-        $category_name = DB::table('chuc_vu')->where('chuc_vu.CV_MA', $CV_MA )->get();
-
-        return view('pages.chuc-vu.show_category')->with('category', $all_chuc_vu)
-        ->with('category_by_id', $category_by_id)->with('category_name', $category_name);
-    }
-
 /*-----------------------------------*\
   #BACKEND <FOR CHỦ CỬA HÀNG>
 \*-----------------------------------*/

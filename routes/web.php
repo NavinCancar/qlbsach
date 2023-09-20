@@ -107,6 +107,23 @@ Route::get('/all-chuc-vu', 'App\Http\Controllers\Chucvu@all_chuc_vu'); ///ok
 Route::post('/save-chuc-vu', 'App\Http\Controllers\Chucvu@save_chuc_vu'); ///ok
 Route::post('/update-chuc-vu/{CV_MA}', 'App\Http\Controllers\Chucvu@update_chuc_vu'); ///ok
 
+//lô nhập
+Route::get('/add-lo-nhap', 'App\Http\Controllers\Lonhap@add_lo_nhap'); ///ok
+Route::get('/edit-lo-nhap/{LN_MA}', 'App\Http\Controllers\Lonhap@edit_lo_nhap'); ///ok
+Route::get('/delete-lo-nhap/{LN_MA}', 'App\Http\Controllers\Lonhap@delete_lo_nhap'); ///ok
+Route::get('/all-lo-nhap', 'App\Http\Controllers\Lonhap@all_lo_nhap'); ///ok
+
+Route::post('/save-lo-nhap', 'App\Http\Controllers\Lonhap@save_lo_nhap'); ///ok
+Route::post('/update-lo-nhap/{LN_MA}', 'App\Http\Controllers\Lonhap@update_lo_nhap'); ///ok
+
+//lô nhập
+Route::get('/add-lo-xuat', 'App\Http\Controllers\Loxuat@add_lo_xuat'); ///ok
+Route::get('/edit-lo-xuat/{LX_MA}', 'App\Http\Controllers\Loxuat@edit_lo_xuat'); ///ok
+Route::get('/delete-lo-xuat/{LX_MA}', 'App\Http\Controllers\Loxuat@delete_lo_xuat'); ///ok
+Route::get('/all-lo-xuat', 'App\Http\Controllers\Loxuat@all_lo_xuat'); ///ok
+
+Route::post('/save-lo-xuat', 'App\Http\Controllers\Loxuat@save_lo_xuat'); ///ok
+Route::post('/update-lo-xuat/{LX_MA}', 'App\Http\Controllers\Loxuat@update_lo_xuat'); ///ok
 
 
 
