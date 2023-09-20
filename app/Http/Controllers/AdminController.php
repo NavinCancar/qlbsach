@@ -80,4 +80,22 @@ class AdminController extends Controller
         Session::put('NV_DUONGDANANHDAIDIEN',null);
         return Redirect::to('/admin');
     }
+
+/*-----------------------------------*\
+  #BACKEND <FOR NHÂN VIÊN BÁN HÀNG>
+\*------------------------------------*/
+
+
+    public function danh_gia(){
+        $this->AuthLogin();
+
+        $all_danh_gia = DB::table('danh_gia')
+        ->join('sach','sach.SACH_MA','=','danh_gia.SACH_MA')
+        ->join('khach_hang','khach_hang.KH_MA','=','danh_gia.KH_MA')
+        ->orderby('DG_MA','desc')->paginate(10);
+        return view('admin.danh-gia')->with('all_danh_gia', $all_danh_gia);
+
+    }
+
+
 }

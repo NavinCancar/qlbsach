@@ -51,7 +51,7 @@
                                     class="list-group-item list-group-item-action bg-transparent primary-text fw-bold line">
                                     - Danh sách sách
                                 </a>
-                                <a href="{{URL::to('/???H')}}"
+                                <a href="{{URL::to('/danh-gia')}}"
                                     class="list-group-item list-group-item-action bg-transparent primary-text fw-bold">
                                     - Xử lý đánh giá sách
                                 </a>

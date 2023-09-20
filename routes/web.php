@@ -96,3 +96,11 @@ Route::get('/all-author', 'App\Http\Controllers\AuthorController@all_author'); /
 
 Route::post('/save-author', 'App\Http\Controllers\AuthorController@save_author'); ///ok
 Route::post('/update-author/{TLS_MA}', 'App\Http\Controllers\AuthorController@update_author'); ///ok
+
+
+
+
+
+
+//đánh giá
+Route::get('/danh-gia', 'App\Http\Controllers\AdminController@danh_gia');
