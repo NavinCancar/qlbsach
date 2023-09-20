@@ -104,3 +104,7 @@ Route::post('/update-author/{TLS_MA}', 'App\Http\Controllers\AuthorController@up
 
 //đánh giá
 Route::get('/danh-gia', 'App\Http\Controllers\AdminController@danh_gia');
+Route::get('/delete-danh-gia/{DG_MA}', 'App\Http\Controllers\AdminController@delete_danh_gia'); 
+
+//khách hàng
+Route::get('/khach-hang', 'App\Http\Controllers\AdminController@khach_hang');

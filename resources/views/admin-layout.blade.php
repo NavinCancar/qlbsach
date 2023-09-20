@@ -181,7 +181,7 @@
                                     class="list-group-item list-group-item-action bg-transparent primary-text fw-bold line">
                                     - Danh sách nhân viên
                                 </a>
-                                <a href="{{URL::to('/???H')}}"
+                                <a href="{{URL::to('/khach-hang')}}"
                                     class="list-group-item list-group-item-action bg-transparent primary-text fw-bold">
                                     - Quản lý khách hàng
                                 </a>

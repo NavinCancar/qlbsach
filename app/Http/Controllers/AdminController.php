@@ -85,7 +85,7 @@ class AdminController extends Controller
   #BACKEND <FOR NHÂN VIÊN BÁN HÀNG>
 \*------------------------------------*/
 
-
+    //đánh giá
     public function danh_gia(){
         $this->AuthLogin();
 
@@ -94,8 +94,29 @@ class AdminController extends Controller
         ->join('khach_hang','khach_hang.KH_MA','=','danh_gia.KH_MA')
         ->orderby('DG_MA','desc')->paginate(10);
         return view('admin.danh-gia')->with('all_danh_gia', $all_danh_gia);
-
     }
 
+    public function delete_danh_gia($DG_MA){
+        $this->AuthLogin();
+
+        DB::table('danh_gia')->where('DG_MA',$DG_MA)->delete();
+        Session::put('message','Xóa đánh giá thành công');
+        return Redirect::to('danh-gia');
+    }
+
+/*-----------------------------------*\
+  #BACKEND <FOR CHỦ>
+\*------------------------------------*/
+
+    //khách hàng
+    public function khach_hang(){
+        $this->AuthLogin();
+
+        $all_khach_hang = DB::table('khach_hang')
+        //->join('sach','sach.SACH_MA','=','khach_hang.SACH_MA')
+        //->join('khach_hang','khach_hang.KH_MA','=','khach_hang.KH_MA')
+        ->orderby('KH_MA','desc')->paginate(10);
+        return view('admin.khach-hang')->with('all_khach_hang', $all_khach_hang);
+    }
 
 }
