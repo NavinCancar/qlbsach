@@ -13,6 +13,7 @@
   --dark-blue: #0f2464;
   --white: #ffffff;
   --gold: #ffd700;
+  --bg-blue: #d2dbff;
 
   /*typography*/
   --ff-philosopher: 'Philosopher', sans-serif;
@@ -53,7 +54,7 @@
 
 .primary-bg {
   background-color: var(--white);
-  background-color: #d2dbff;
+  background-color: var(--bg-blue);
 }
 
 .secondary-bg {
@@ -239,6 +240,17 @@ ul.dropdown-menu {
   color: #fff;
 }
 
+.btn-blue{
+  background-color: #fff;
+  color: var(--dark-blue);
+  border: 1px solid var(--light-gray);
+}
+
+.btn-blue:hover{
+  background-color: var(--bg-blue);
+  color: #fff;
+}
+
 .center{
   margin: auto;
 }
@@ -320,4 +332,10 @@ a:hover{
   width: 4.5rem; /* Điều chỉnh kích thước theo ý muốn */
   height: 4.5rem; /* Điều chỉnh kích thước theo ý muốn */
   border-radius: 50%;
+}
+
+.primary-table thead {
+  background-color: var(--blue);
+  color: var(--white);
+  text-align: center;
 }

@@ -97,6 +97,18 @@ Route::get('/all-author', 'App\Http\Controllers\AuthorController@all_author'); /
 Route::post('/save-author', 'App\Http\Controllers\AuthorController@save_author'); ///ok
 Route::post('/update-author/{TLS_MA}', 'App\Http\Controllers\AuthorController@update_author'); ///ok
 
+//Đơn đặt hàng
+Route::get('/danh-muc-trang-thai/tat-ca', 'App\Http\Controllers\OrderController@all_status'); ///ok
+Route::get('/danh-muc-trang-thai/{TT_MA}', 'App\Http\Controllers\OrderController@show_status_order'); ///ok
+Route::get('/show-detail/{DDH_MA}','App\Http\Controllers\OrderController@show_detail'); ///ok
+Route::get('/print-bill/{DDH_MA}','App\Http\Controllers\OrderController@print_bill');  ///ok style bill lại
+
+Route::post('/search-all-order', 'App\Http\Controllers\OrderController@search_all_order'); ///ok
+
+//Trạng thái đơn đặt hàng
+Route::get('/update-status-order/{DDH_MA}', 'App\Http\Controllers\OrderController@update_status_order'); ///ok
+
+Route::post('/update_status/ddh={DDH_MA}&tt={TT_MA}', 'App\Http\Controllers\OrderController@update_status'); ///ok
 
 //chức vụ
 Route::get('/add-chuc-vu', 'App\Http\Controllers\Chucvu@add_chuc_vu'); ///ok

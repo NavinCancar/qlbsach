@@ -119,7 +119,7 @@
                         </div>
 
                         <!--5. Đơn đặt hàng-->
-                        <a href="{{URL::to('/???P')}}"
+                        <a href="{{URL::to('/danh-muc-trang-thai/tat-ca')}}"
                             class="list-group-item list-group-item-action bg-transparent primary-text fw-bold">
                             <i class="fas fa-file-alt me-2"></i>Đơn đặt hàng
                         </a>

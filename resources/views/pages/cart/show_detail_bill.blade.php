@@ -44,7 +44,7 @@
                             class="form-control" id="exampleInputEmail1">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputEmail1"><b>Nội thất đặt:</b></label>
+                            <label for="exampleInputEmail1"><b>Sách đặt:</b></label>
 
                             <div class="table-responsive">
                                 <table class="table b-t b-light table-responsive-md text-center primary-table">
