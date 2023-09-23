@@ -14,7 +14,10 @@ use Carbon\Carbon;
 session_start();
 
 class OrderController extends Controller
-{//Backend--Chủ cửa hàng + Bán hàng-------------------------------------------------------
+{
+/*-----------------------------------*\
+  #BACKEND <FOR CHỦ CỬA HÀNG & NV BÁN HÀNG>
+\*-----------------------------------*/
     
     public function AuthLogin(){
         $NV_MA = Session::get('NV_MA');

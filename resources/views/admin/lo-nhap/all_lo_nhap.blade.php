@@ -23,7 +23,7 @@
                                   <th>Nhân viên</th>
                                   <th>Ngày nhập</th>
                                   <th>Nội dung</th>
-                                  <th style="width:60px;"></th>
+                                  <th style="width:90px;"></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -34,6 +34,7 @@
                                   <td>{{$cate_pro->LN_NGAYNHAP}}</td>
                                   <td>{{$cate_pro->LN_NOIDUNG}}</td>
                                   <td>
+                                    <a href="{{URL::to('/all-chitiet-lonhap/'.$cate_pro -> LN_MA)}}" class="active styling-edit" ui-toggle-class=""><i class="fa fa-info-circle text-primary text-active"></i></a>
                                     <a href="{{URL::to('/edit-lo-nhap/'.$cate_pro -> LN_MA)}}" class="active styling-edit" ui-toggle-class=""><i class="fa fa-pen text-success text-active"></i></a>
                                     <a onclick="return confirm('Bạn có chắc chắn muốn xóa mục này không?')" href="{{URL::to('/delete-lo-nhap/'.$cate_pro -> LN_MA)}}" class="active styling-edit" ui-toggle-class=""><i class="fa fa-times text-danger text"></i></a>
                                   </td>
