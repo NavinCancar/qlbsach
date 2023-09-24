@@ -54,6 +54,35 @@ class Chitietloxuat extends Controller
         $data['CTLX_SOLUONG'] = $request->CTLX_SOLUONG; 
         $data['CTLX_GIA'] = $request->CTLX_GIA; 
 
+        //Check phù hợp số lượng tồn
+        $ddh = DB::table('chi_tiet_don_dat_hang')
+        ->join('don_dat_hang','chi_tiet_don_dat_hang.DDH_MA','=','don_dat_hang.DDH_MA')
+        ->where('TT_MA', '!=', 5)
+        ->where('SACH_MA', $request->SACH_MA)->sum('CTDDH_SOLUONG');
+
+        $nhap = DB::table('chi_tiet_lo_nhap')
+            ->where('SACH_MA', $request->SACH_MA)->sum('CTLN_SOLUONG');
+        $xuat = DB::table('chi_tiet_lo_xuat')
+            ->where('SACH_MA', $request->SACH_MA)->sum('CTLX_SOLUONG');
+
+        if ($nhap-$xuat-$ddh<$request->CTLX_SOLUONG){
+            Session::put('message','Số lượng nhập lớn hơn số lượng tồn, sách chỉ còn tồn: '.$nhap-$xuat-$ddh);
+            return Redirect::to('add-chitiet-loxuat/'.$LX_MA);
+        }
+
+        if ($nhap-$xuat-$ddh-$request->CTLX_SOLUONG==0){
+            DB::table('chi_tiet_gio_hang')->where('SACH_MA', $request->SACH_MA)->delete();
+        }
+
+        //Check đã thêm rồi
+        $check=DB::table('chi_tiet_lo_xuat')
+        ->where('LX_MA', $LX_MA)->where('SACH_MA', $request->SACH_MA)->count();
+        if($check!=0){
+            DB::table('chi_tiet_lo_xuat')->where('LX_MA',$LX_MA)->where('SACH_MA',$request->SACH_MA)->update($data);
+            Session::put('message','Thêm chi tiết lô thành công');
+            return Redirect::to('all-chitiet-loxuat/'.$LX_MA);
+        }
+
         DB::table('chi_tiet_lo_xuat')->insert($data);
         Session::put('message','Thêm chi tiết lô thành công');
         return Redirect::to('all-chitiet-loxuat/'.$LX_MA);
@@ -73,6 +102,28 @@ class Chitietloxuat extends Controller
         $data = array(); 
         $data['CTLX_SOLUONG'] = $request->CTLX_SOLUONG; 
         $data['CTLX_GIA'] = $request->CTLX_GIA;
+
+        
+        //Check phù hợp số lượng tồn
+        $ddh = DB::table('chi_tiet_don_dat_hang')
+        ->join('don_dat_hang','chi_tiet_don_dat_hang.DDH_MA','=','don_dat_hang.DDH_MA')
+        ->where('TT_MA', '!=', 5)
+        ->where('SACH_MA', $request->SACH_MA)->sum('CTDDH_SOLUONG');
+
+        $nhap = DB::table('chi_tiet_lo_nhap')
+            ->where('SACH_MA', $request->SACH_MA)->sum('CTLN_SOLUONG');
+        $xuat = DB::table('chi_tiet_lo_xuat')
+            ->where('SACH_MA', $request->SACH_MA)->sum('CTLX_SOLUONG');
+
+        if ($nhap-$xuat-$ddh<$request->CTLX_SOLUONG){
+            Session::put('message','Số lượng nhập lớn hơn số lượng tồn, sách chỉ còn tồn: '.$nhap-$xuat-$ddh);
+            return Redirect::to('edit-chitiet-loxuat/lo='.$LX_MA.'&sach='.$request->SACH_MA);
+        }
+
+        if ($nhap-$xuat-$ddh-$request->CTLX_SOLUONG==0){
+            DB::table('chi_tiet_gio_hang')->where('SACH_MA', $request->SACH_MA)->delete();
+        }
+
 
         DB::table('chi_tiet_lo_xuat')->where('LX_MA',$LX_MA)->where('SACH_MA',$SACH_MA)->update($data);
         Session::put('message','Cập nhật chi tiết lô xuất thành công');

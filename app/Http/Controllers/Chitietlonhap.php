@@ -54,6 +54,15 @@ class Chitietlonhap extends Controller
         $data['CTLN_SOLUONG'] = $request->CTLN_SOLUONG; 
         $data['CTLN_GIA'] = $request->CTLN_GIA; 
 
+        //Check đã thêm rồi
+        $check=DB::table('chi_tiet_lo_nhap')
+        ->where('LN_MA', $LN_MA)->where('SACH_MA', $request->SACH_MA)->count();
+        if($check!=0){
+            DB::table('chi_tiet_lo_nhap')->where('LN_MA',$LN_MA)->where('SACH_MA',$request->SACH_MA)->update($data);
+            Session::put('message','Thêm chi tiết lô thành công');
+            return Redirect::to('all-chitiet-lonhap/'.$LN_MA);
+        }
+
         DB::table('chi_tiet_lo_nhap')->insert($data);
         Session::put('message','Thêm chi tiết lô thành công');
         return Redirect::to('all-chitiet-lonhap/'.$LN_MA);

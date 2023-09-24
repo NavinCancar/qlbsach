@@ -37,12 +37,12 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Số lượng</label>
-                                            <input type="text" value="{{$edit_value->CTLN_SOLUONG}}" name="CTLN_SOLUONG" class="form-control" id="exampleInputEmail1" placeholder="Số lượng" required=""  pattern="[0-9]+">
+                                            <input type="number" min="1" value="{{$edit_value->CTLN_SOLUONG}}" name="CTLN_SOLUONG" class="form-control" id="exampleInputEmail1" placeholder="Số lượng" required="">
                                         </div>
                                         
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Giá</label>
-                                            <input type="text" value="{{$edit_value->CTLN_GIA}}" name="CTLN_GIA" class="form-control" id="exampleInputEmail1" placeholder="Giá" required=""  pattern="[0-9]+">
+                                            <input type="number" min="0" value="{{$edit_value->CTLN_GIA}}" name="CTLN_GIA" class="form-control" id="exampleInputEmail1" placeholder="Giá" required="">
                                         </div>
                                         <button type="submit" name="add_chitiet_lonhap" class="btn btn-search mb-3 mt-2 text-light" style="width: 100%;">Cập nhật chi tiết lô nhập</button>
                                     </form>

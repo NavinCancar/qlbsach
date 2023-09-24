@@ -32,12 +32,12 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Số lượng</label>
-                                        <input type="text" name="CTLX_SOLUONG" class="form-control" id="exampleInputEmail1" placeholder="Số lượng" required="" pattern="[0-9]+">
+                                        <input type="number" min="1" name="CTLX_SOLUONG" class="form-control" id="exampleInputEmail1" placeholder="Số lượng" required="" >
                                     </div>
                                     
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Giá</label>
-                                        <input type="text" name="CTLX_GIA" class="form-control" id="exampleInputEmail1" placeholder="Giá" required="" pattern="[0-9]+">
+                                        <input type="number" min="0" name="CTLX_GIA" class="form-control" id="exampleInputEmail1" placeholder="Giá" required="">
                                     </div>
                                     <button type="submit" name="add_chitiet_loxuat" class="btn btn-search mb-3 mt-2 text-light" style="width: 100%;">Thêm chi tiết lô xuất</button>
                                 </form>
