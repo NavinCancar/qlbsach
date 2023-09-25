@@ -19,6 +19,8 @@
   <!--fontawesome-->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
         integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" />
+
+    <script src="{{asset('public/backend/js/morris.js')}}"></script>
 </head>
 
 <body>
@@ -216,7 +218,7 @@
                             </div>
                         </div>
 
-                        <a href="{{URL::to('/???P')}}"
+                        <a href="{{URL::to('/thong-ke')}}"
                             class="list-group-item list-group-item-action bg-transparent primary-text fw-bold">
                             <i class="fas fa-chart-bar me-2"></i>Thống kê
                         </a>

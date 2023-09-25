@@ -189,3 +189,8 @@ Route::get('/delete-danh-gia/{DG_MA}', 'App\Http\Controllers\AdminController@del
 
 //khách hàng
 Route::get('/khach-hang', 'App\Http\Controllers\AdminController@khach_hang');
+
+//Thống kê 
+Route::get('/thong-ke', 'App\Http\Controllers\AdminController@thong_ke'); 
+
+Route::post('/thong-ke-thoi-gian', 'App\Http\Controllers\AdminController@thong_ke_tg'); 

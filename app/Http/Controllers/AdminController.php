@@ -119,4 +119,32 @@ class AdminController extends Controller
         return view('admin.khach-hang')->with('all_khach_hang', $all_khach_hang);
     }
 
+        //Thống kê
+        public function thong_ke(){
+            $this->AuthLogin();
+    
+            $dayprev=Carbon::now('Asia/Ho_Chi_Minh')->subMonths(3);
+            $daynow=Carbon::now('Asia/Ho_Chi_Minh');
+            //echo $dayprev .";". $daynow;
+    
+            Session::put('TGBDau', $dayprev);
+            Session::put('TGKThuc', $daynow);
+
+            return view('admin.thong_ke');
+        }
+
+        public function thong_ke_tg(Request $request){
+            $this->AuthLogin();
+            $homnay=Carbon::now('Asia/Ho_Chi_Minh');
+            if ($request->TGBDau && $request->TGKThuc && $request->TGBDau<=$request->TGKThuc && $request->TGKThuc<=$homnay ){
+                Session::put('TGBDau', $request->TGBDau);
+                Session::put('TGKThuc', $request->TGKThuc);
+
+                return view('admin.thong_ke');
+            }
+            
+            Session::put('message','Xin kiểm tra lại dữ liệu đầu vào');
+            return view('admin.thong_ke');
+        }
+
 }
