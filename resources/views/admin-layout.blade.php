@@ -43,11 +43,11 @@
                         </div>
                         <div id="collapse1" class="collapse" data-bs-parent="#accordion">
                             <div class="card-body">
-                                <a href="{{URL::to('/???P')}}"
+                                <a href="{{URL::to('/add-product')}}"
                                     class="list-group-item list-group-item-action bg-transparent primary-text fw-bold">
                                     - Thêm sách
                                 </a>
-                                <a href="{{URL::to('/???P')}}"
+                                <a href="{{URL::to('/all-product')}}"
                                     class="list-group-item list-group-item-action bg-transparent primary-text fw-bold line">
                                     - Danh sách sách
                                 </a>
@@ -133,7 +133,7 @@
                         </div>
                         <div id="collapse6" class="collapse" data-bs-parent="#accordion">
                             <div class="card-body">
-                                <a href="{{URL::to('/???')}}"
+                                <a href="{{URL::to('/???P')}}"
                                     class="list-group-item list-group-item-action bg-transparent primary-text fw-bold line">
                                     - Danh sách tồn kho
                                 </a>

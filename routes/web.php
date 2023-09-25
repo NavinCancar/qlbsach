@@ -97,6 +97,16 @@ Route::get('/all-author', 'App\Http\Controllers\AuthorController@all_author'); /
 Route::post('/save-author', 'App\Http\Controllers\AuthorController@save_author'); ///ok
 Route::post('/update-author/{TLS_MA}', 'App\Http\Controllers\AuthorController@update_author'); ///ok
 
+//Product: Sách
+Route::get('/add-product', 'App\Http\Controllers\ProductController@add_product'); ///ok
+Route::get('/edit-product/{SACH_MA}', 'App\Http\Controllers\ProductController@edit_product'); ///ok
+Route::get('/delete-product/{SACH_MA}', 'App\Http\Controllers\ProductController@delete_product'); ///ok
+Route::get('/all-product', 'App\Http\Controllers\ProductController@all_product'); ///ok
+Route::get('/show-product/{SACH_MA}', 'App\Http\Controllers\ProductController@show_product'); ///ok
+
+Route::post('/save-product', 'App\Http\Controllers\ProductController@save_product'); ///ok
+Route::post('/update-product/{SACH_MA}', 'App\Http\Controllers\ProductController@update_product'); ///ok
+
 //Đơn đặt hàng
 Route::get('/danh-muc-trang-thai/tat-ca', 'App\Http\Controllers\OrderController@all_status'); ///ok
 Route::get('/danh-muc-trang-thai/{TT_MA}', 'App\Http\Controllers\OrderController@show_status_order'); ///ok

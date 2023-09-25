@@ -339,3 +339,8 @@ a:hover{
   color: var(--white);
   text-align: center;
 }
+
+.form-group label{
+  font-weight: bold;
+  color: var(--dark-blue);
+}
