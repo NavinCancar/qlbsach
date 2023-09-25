@@ -173,11 +173,11 @@
                                     class="list-group-item list-group-item-action bg-transparent primary-text fw-bold line">
                                     - Danh sách chức vụ
                                 </a>
-                                <a href="{{URL::to('/???P')}}"
+                                <a href="{{URL::to('/add-employee')}}"
                                     class="list-group-item list-group-item-action bg-transparent primary-text fw-bold">
                                     - Thêm nhân viên
                                 </a>
-                                <a href="{{URL::to('/???P')}}"
+                                <a href="{{URL::to('/all-employee')}}"
                                     class="list-group-item list-group-item-action bg-transparent primary-text fw-bold line">
                                     - Danh sách nhân viên
                                 </a>

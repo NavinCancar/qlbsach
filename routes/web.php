@@ -107,6 +107,21 @@ Route::get('/show-product/{SACH_MA}', 'App\Http\Controllers\ProductController@sh
 Route::post('/save-product', 'App\Http\Controllers\ProductController@save_product'); ///ok
 Route::post('/update-product/{SACH_MA}', 'App\Http\Controllers\ProductController@update_product'); ///ok
 
+//Employee: Nhân viên
+Route::get('/add-employee', 'App\Http\Controllers\EmployeeController@add_employee');  ///ok
+Route::get('/edit-employee/{NV_MA}', 'App\Http\Controllers\EmployeeController@edit_employee'); ///ok
+Route::get('/delete-employee/{NV_MA}', 'App\Http\Controllers\EmployeeController@delete_employee'); ///ok
+Route::get('/all-employee', 'App\Http\Controllers\EmployeeController@all_employee'); ///ok
+
+Route::post('/save-employee', 'App\Http\Controllers\EmployeeController@save_employee'); ///ok
+Route::post('/update-employee/{NV_MA}', 'App\Http\Controllers\EmployeeController@update_employee'); ///ok
+
+  //Tài khoản cá nhân
+  Route::get('/change-password', 'App\Http\Controllers\EmployeeController@change_password'); ///ok
+  Route::get('/show-employee', 'App\Http\Controllers\EmployeeController@show_employee'); ///ok
+  
+  Route::post('/update-password', 'App\Http\Controllers\EmployeeController@update_password'); ///ok
+
 //Đơn đặt hàng
 Route::get('/danh-muc-trang-thai/tat-ca', 'App\Http\Controllers\OrderController@all_status'); ///ok
 Route::get('/danh-muc-trang-thai/{TT_MA}', 'App\Http\Controllers\OrderController@show_status_order'); ///ok
