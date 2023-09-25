@@ -17,7 +17,7 @@
                                 <form role="form" action="{{URL::to('/update-author/'.$edit_value->TG_MA)}}" method="post">
                                     {{csrf_field() }}
                                     <div class="form-group">
-                                        <label for="exampleInputEmail1">Tên tác giả</label>
+                                        <label for="exampleInputEmail1">Bút danh tác giả</label>
                                         <input type="text" name="TG_BUTDANH" value="{{$edit_value->TG_BUTDANH}}" class="form-control" id="exampleInputEmail1" required="">
                                     </div>
                                     <div class="form-group">

@@ -311,4 +311,25 @@ class ProductController extends Controller
         ->with('cttls', $cttls)->with('cttg', $cttg);
         return view('admin-layout')->with('admin.book.edit_product', $manager_product);
     }
+
+    public function search_all_product(Request $request){
+        $this->AuthLoginChu();
+
+        $keywords = $request ->keywords_submit;
+
+        $all_product = DB::table('sach')
+        ->join('nha_xuat_ban','sach.NXB_MA','=','nha_xuat_ban.NXB_MA')
+        ->where('SACH_TEN', 'LIKE', '%'.$keywords.'%')
+        ->orderby('SACH_MA', 'desc')->paginate(10);
+
+        $tls = DB::table('the_loai_sach')
+        ->join('thuoc_the_loai','thuoc_the_loai.TLS_MA','=','the_loai_sach.TLS_MA')->get();
+
+        $tg = DB::table('tac_gia')
+        ->join('cua_sach','tac_gia.TG_MA','=','cua_sach.TG_MA')->get();
+
+        $manager_product = view('admin.book.all_product')->with('all_product', $all_product)
+        ->with('tls', $tls)->with('tg', $tg);        
+        return view('admin-layout')->with('admin.book.search_all_product', $manager_product);
+    }
 }

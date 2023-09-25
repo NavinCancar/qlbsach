@@ -18,7 +18,7 @@
                                 </div>
                             </div>
                             <p class="fs-5">Đơn hàng vẫn chưa xử lý</p>
-                            <a href="#" class="text-center">Xem thêm</a>
+                            <a href="{{URL::to('/danh-muc-trang-thai/1')}}" class="text-center">Xem thêm</a>
                         </div>
                     </div>
 
@@ -36,7 +36,7 @@
                                 </div>
                             </div>
                             <p class="fs-5">Đơn hàng chờ vận chuyển</p>
-                            <a href="#" class="text-center">Xem thêm</a>
+                            <a href="{{URL::to('/danh-muc-trang-thai/2')}}" class="text-center">Xem thêm</a>
                         </div>
                     </div>
 
@@ -54,7 +54,7 @@
                                 </div>
                             </div>
                             <p class="fs-5">Đơn hàng đang được giao</p>
-                            <a href="#" class="text-center">Xem thêm</a>
+                            <a href="{{URL::to('/danh-muc-trang-thai/3')}}" class="text-center">Xem thêm</a>
                         </div>
                     </div>
 
@@ -72,7 +72,7 @@
                                 </div>
                             </div>
                             <p class="fs-5">Số khách hàng thành viên</p>
-                            <a href="#" class="text-center">Xem thêm</a>
+                            <a href="{{URL::to('/khach-hang')}}" class="text-center">Xem thêm</a>
                         </div>
                     </div>
                 </div>

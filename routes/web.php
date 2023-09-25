@@ -106,6 +106,7 @@ Route::get('/show-product/{SACH_MA}', 'App\Http\Controllers\ProductController@sh
 
 Route::post('/save-product', 'App\Http\Controllers\ProductController@save_product'); ///ok
 Route::post('/update-product/{SACH_MA}', 'App\Http\Controllers\ProductController@update_product'); ///ok
+Route::post('/search-all-product', 'App\Http\Controllers\ProductController@search_all_product'); ///
 
 //Employee: Nhân viên
 Route::get('/add-employee', 'App\Http\Controllers\EmployeeController@add_employee');  ///ok

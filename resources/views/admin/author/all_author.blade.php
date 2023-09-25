@@ -19,8 +19,9 @@
                         <table class="table bg-white rounded shadow-sm table-hover">
                             <thead>
                                 <tr>
-                                  <th>Mã tác giả</th>
-                                  <th>Tên tác giả</th>
+                                  <th>Mã</th>
+                                  <th>Bút danh tác giả</th>
+                                  <th style="width:700px;">Mô tả tác giả</th>
                                   <th style="width:60px;"></th>
                                 </tr>
                             </thead>
@@ -29,6 +30,7 @@
                                 <tr>
                                   <td>{{$cate_pro->TG_MA}}</td>
                                   <td>{{$cate_pro->TG_BUTDANH}}</td>
+                                  <td>{{$cate_pro->TG_MOTA}}</td>
                                   <td>
                                     <a href="{{URL::to('/edit-author/'.$cate_pro -> TG_MA)}}" class="active styling-edit" ui-toggle-class=""><i class="fa fa-pen text-success text-active"></i></a>
                                     <a onclick="return confirm('Bạn có chắc chắn muốn xóa mục này không?')" href="{{URL::to('/delete-author/'.$cate_pro -> TG_MA)}}" class="active styling-edit" ui-toggle-class=""><i class="fa fa-times text-danger text"></i></a>

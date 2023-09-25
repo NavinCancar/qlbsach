@@ -133,10 +133,6 @@
                         </div>
                         <div id="collapse6" class="collapse" data-bs-parent="#accordion">
                             <div class="card-body">
-                                <a href="{{URL::to('/???P')}}"
-                                    class="list-group-item list-group-item-action bg-transparent primary-text fw-bold line">
-                                    - Danh sách tồn kho
-                                </a>
                                 <a href="{{URL::to('/add-lo-nhap')}}"
                                     class="list-group-item list-group-item-action bg-transparent primary-text fw-bold">
                                     - Thêm lô nhập

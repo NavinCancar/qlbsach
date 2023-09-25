@@ -35,7 +35,6 @@
                           </form>
                         </div>
                       </div>
-                      
                     </div>
                     <!--Content-->
                     <div class="table-responsive">
