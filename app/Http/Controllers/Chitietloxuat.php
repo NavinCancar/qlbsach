@@ -70,10 +70,6 @@ class Chitietloxuat extends Controller
             return Redirect::to('add-chitiet-loxuat/'.$LX_MA);
         }
 
-        if ($nhap-$xuat-$ddh-$request->CTLX_SOLUONG==0){
-            DB::table('chi_tiet_gio_hang')->where('SACH_MA', $request->SACH_MA)->delete();
-        }
-
         //Check đã thêm rồi
         $check=DB::table('chi_tiet_lo_xuat')
         ->where('LX_MA', $LX_MA)->where('SACH_MA', $request->SACH_MA)->count();
@@ -119,11 +115,6 @@ class Chitietloxuat extends Controller
             Session::put('message','Số lượng nhập lớn hơn số lượng tồn, sách chỉ còn tồn: '.$nhap-$xuat-$ddh);
             return Redirect::to('edit-chitiet-loxuat/lo='.$LX_MA.'&sach='.$request->SACH_MA);
         }
-
-        if ($nhap-$xuat-$ddh-$request->CTLX_SOLUONG==0){
-            DB::table('chi_tiet_gio_hang')->where('SACH_MA', $request->SACH_MA)->delete();
-        }
-
 
         DB::table('chi_tiet_lo_xuat')->where('LX_MA',$LX_MA)->where('SACH_MA',$SACH_MA)->update($data);
         Session::put('message','Cập nhật chi tiết lô xuất thành công');
