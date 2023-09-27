@@ -194,3 +194,44 @@ Route::get('/khach-hang', 'App\Http\Controllers\AdminController@khach_hang');
 Route::get('/thong-ke', 'App\Http\Controllers\AdminController@thong_ke'); 
 
 Route::post('/thong-ke-thoi-gian', 'App\Http\Controllers\AdminController@thong_ke_tg'); 
+
+
+// hình thức thanh toán
+Route::get('/add-hinhthuc', 'App\Http\Controllers\hinhthuc@add_hinhthuc'); ///
+Route::get('/edit-hinhthuc/{HTTT_MA}', 'App\Http\Controllers\hinhthuc@edit_hinhthuc'); ///
+Route::get('/delete-hinhthuc/{HTTT_MA}', 'App\Http\Controllers\hinhthuc@delete_hinhthuc'); ///
+Route::get('/all-hinhthuc', 'App\Http\Controllers\hinhthuc@all_hinhthuc'); ///
+
+Route::post('/save-hinhthuc', 'App\Http\Controllers\hinhthuc@save_hinhthuc'); ///
+Route::post('/update-hinhthuc/{HTTT_MA}', 'App\Http\Controllers\hinhthuc@update_hinhthuc'); ///
+
+
+// trạng thái đơn hàng
+Route::get('/add-trangthai', 'App\Http\Controllers\trangthai@add_trangthai'); ///
+Route::get('/edit-trangthai/{TT_MA}', 'App\Http\Controllers\trangthai@edit_trangthai'); ///
+Route::get('/delete-trangthai/{TT_MA}', 'App\Http\Controllers\trangthai@delete_trangthai'); ///
+Route::get('/all-trangthai', 'App\Http\Controllers\trangthai@all_trangthai'); ///
+
+Route::post('/save-trangthai', 'App\Http\Controllers\trangthai@save_trangthai'); ///
+Route::post('/update-trangthai/{TT_MA}', 'App\Http\Controllers\trangthai@update_trangthai'); ///
+
+//tỉnh, thành phố
+
+Route::get('/add-tinhthanhpho', 'App\Http\Controllers\tinhthanhpho@add_tinhthanhpho'); ///
+Route::get('/edit-tinhthanhpho/{TTP_MA}', 'App\Http\Controllers\tinhthanhpho@edit_tinhthanhpho'); ///
+Route::get('/delete-tinhthanhpho/{TTP_MA}', 'App\Http\Controllers\tinhthanhpho@delete_tinhthanhpho'); ///
+Route::get('/all-tinhthanhpho', 'App\Http\Controllers\tinhthanhpho@all_tinhthanhpho'); ///
+
+Route::post('/save-tinhthanhpho', 'App\Http\Controllers\tinhthanhpho@save_tinhthanhpho'); ///
+Route::post('/update-tinhthanhpho/{TTP_MA}', 'App\Http\Controllers\tinhthanhpho@update_tinhthanhpho'); ///
+
+
+//Nhà xuất bản
+
+Route::get('/add-nhaxuatban', 'App\Http\Controllers\nhaxuatban@add_nhaxuatban'); ///
+Route::get('/edit-nhaxuatban/{NXB_MA}', 'App\Http\Controllers\nhaxuatban@edit_nhaxuatban'); ///
+Route::get('/delete-nhaxuatban/{NXB_MA}', 'App\Http\Controllers\nhaxuatban@delete_nhaxuatban'); ///
+Route::get('/all-nhaxuatban', 'App\Http\Controllers\nhaxuatban@all_nhaxuatban'); ///
+
+Route::post('/save-nhaxuatban', 'App\Http\Controllers\nhaxuatban@save_nhaxuatban'); ///
+Route::post('/update-nhaxuatban/{NXB_MA}', 'App\Http\Controllers\nhaxuatban@update_nhaxuatban'); ///

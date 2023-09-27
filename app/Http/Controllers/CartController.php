@@ -45,7 +45,7 @@ class CartController extends Controller
         $data['CTGH_SOLUONG'] = $request->qty;
         
         /*echo '<pre>';
-        priSACH_r ($data);
+        print_r ($data);
         echo '</pre>';*/
 
         DB::table('gio_hang')->where('GH_MA', $all_cart_product->GH_MA)->update(['GH_NGAYCAPNHATLANCUOI' => Carbon::now('Asia/Ho_Chi_Minh')]);

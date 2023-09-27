@@ -89,11 +89,11 @@
                         </div>
                         <div id="collapse3" class="collapse" data-bs-parent="#accordion">
                             <div class="card-body">
-                                <a href="{{URL::to('/???K')}}"
+                                <a href="{{URL::to('/add-nhaxuatban')}}"
                                     class="list-group-item list-group-item-action bg-transparent primary-text fw-bold">
                                     - Thêm nhà xuất bản
                                 </a>
-                                <a href="{{URL::to('/???K')}}"
+                                <a href="{{URL::to('/all-nhaxuatban')}}"
                                     class="list-group-item list-group-item-action bg-transparent primary-text fw-bold">
                                     - Danh sách nhà xuất bản
                                 </a>
@@ -195,25 +195,29 @@
                         </div>
                         <div id="collapse8" class="collapse" data-bs-parent="#accordion">
                             <div class="card-body">
-                                <a href="{{URL::to('/???K')}}"
+                                <a href="{{URL::to('/add-trangthai')}}"
                                     class="list-group-item list-group-item-action bg-transparent primary-text fw-bold">
                                     - Thêm trạng thái
                                 </a>
-                                <a href="{{URL::to('/???K')}}"
+                                <a href="{{URL::to('/all-trangthai')}}"
                                     class="list-group-item list-group-item-action bg-transparent primary-text fw-bold line">
                                     - Danh sách trạng thái
                                 </a>
-                                <a href="{{URL::to('/???K')}}"
+                                <a href="{{URL::to('/add-hinhthuc')}}"
                                     class="list-group-item list-group-item-action bg-transparent primary-text fw-bold">
                                     - Thêm hình thức thanh toán
                                 </a>
-                                <a href="{{URL::to('/???K')}}"
+                                <a href="{{URL::to('/all-hinhthuc')}}"
                                     class="list-group-item list-group-item-action bg-transparent primary-text fw-bold line">
                                     - Danh sách hình thức thanh toán
                                 </a>
-                                <a href="{{URL::to('/???K')}}"
+                                <a href="{{URL::to('/add-tinhthanhpho')}}"
                                     class="list-group-item list-group-item-action bg-transparent primary-text fw-bold">
-                                    - Quản lý phí ship
+                                    - Thêm phí ship theo tỉnh/TP
+                                </a>
+                                <a href="{{URL::to('/all-tinhthanhpho')}}"
+                                    class="list-group-item list-group-item-action bg-transparent primary-text fw-bold">
+                                    - Danh sách phí ship theo tỉnh/TP
                                 </a>
                             </div>
                         </div>
