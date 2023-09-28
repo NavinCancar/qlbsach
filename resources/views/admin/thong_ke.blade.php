@@ -130,7 +130,9 @@
                                         datasets: [{
                                         label: 'Doanh thu',
                                         data: <?php echo json_encode($data2); ?>,
-                                        backgroundColor: ['#cfebfc',  '#9fd7f9', '#6ec2f7', '#3eaef4', '#27a4f2', '#2790f2', '#0f88fa', '#1167d6', '#1c68c9', '#1c5db0', '#22589c'],
+                                        //backgroundColor: ['#cfebfc',  '#9fd7f9', '#6ec2f7', '#3eaef4', '#27a4f2', '#2790f2', '#0f88fa', '#1167d6', '#1c68c9', '#1c5db0', '#22589c'],
+                                        backgroundColor: ['#cfebfc',  '#bbdffb', '#90cbf9', '#64b7f6', '#41a7f5', '#1e97f3', '#1a8ae5', '#1477d2', '#1065c0', '#0747a1', '#063f90', 
+                                        '#053880', '#043170', '#042a60', '#032350'],
                                         borderColor: 'black',
                                         borderWidth: 2,
                                         pointRadius: 5,
