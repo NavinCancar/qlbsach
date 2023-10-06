@@ -1,7 +1,7 @@
 @extends('admin-layout')
 @section('admin-content')
                 <div class="row my-2 secondary-bg shadow-sm">
-                    <h2 class="fs-2 mb-3 p-2 primary-bg text-center primary-text primary-font">Cập nhật sách</h2>
+                    <h2 class="fs-2 mb-3 p-2 primary-bg text-center primary-text primary-font">Thông tin sách</h2>
                     <?php
                         $message = Session::get('message');
                         if($message){
