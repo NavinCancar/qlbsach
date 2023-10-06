@@ -24,6 +24,7 @@
 </head>
 
 <body>
+    <?php $cv= Session::get('CV_MA_User'); ?>
     <div class="d-flex" id="wrapper">
         <!-- Sidebar -->
         <div class="bg-white" id="sidebar-wrapper">
@@ -45,21 +46,25 @@
                         </div>
                         <div id="collapse1" class="collapse" data-bs-parent="#accordion">
                             <div class="card-body">
+                                @if($cv==1)
                                 <a href="{{URL::to('/add-product')}}"
                                     class="list-group-item list-group-item-action bg-transparent primary-text fw-bold">
                                     - Thêm sách
                                 </a>
+                                @endif
                                 <a href="{{URL::to('/all-product')}}"
                                     class="list-group-item list-group-item-action bg-transparent primary-text fw-bold line">
                                     - Danh sách sách
                                 </a>
+                                @if($cv==1 || $cv==3)
                                 <a href="{{URL::to('/danh-gia')}}"
                                     class="list-group-item list-group-item-action bg-transparent primary-text fw-bold">
                                     - Xử lý đánh giá sách
                                 </a>
+                                @endif
                             </div>
                         </div>
-
+                        @if($cv==1)
                         <!--2. Thể loại sách-->
                         <div class="card-header">
                             <a class="btn list-group-item list-group-item-action bg-transparent primary-text fw-bold"
@@ -119,13 +124,15 @@
                                 </a>
                             </div>
                         </div>
-
+                        @endif
+                        @if($cv==1 || $cv==3)
                         <!--5. Đơn đặt hàng-->
                         <a href="{{URL::to('/danh-muc-trang-thai/tat-ca')}}"
                             class="list-group-item list-group-item-action bg-transparent primary-text fw-bold">
                             <i class="fas fa-file-alt me-2"></i>Đơn đặt hàng
                         </a>
-
+                        @endif
+                        @if($cv==1 || $cv==2)
                         <!--6. Quản lý lô-->
                         <div class="card-header">
                             <a class="btn list-group-item list-group-item-action bg-transparent primary-text fw-bold"
@@ -153,7 +160,8 @@
                                 </a>
                             </div>
                         </div>
-
+                        @endif
+                        @if($cv==1)
                         <!--7. Quản lý tài khoản-->
                         <div class="card-header">
                             <a class="btn list-group-item list-group-item-action bg-transparent primary-text fw-bold"
@@ -185,7 +193,7 @@
                                 </a>
                             </div>
                         </div>
-
+                        
                         <!--8. Khác-->
                         <div class="card-header">
                             <a class="btn list-group-item list-group-item-action bg-transparent primary-text fw-bold"
@@ -226,6 +234,7 @@
                             class="list-group-item list-group-item-action bg-transparent primary-text fw-bold">
                             <i class="fas fa-chart-bar me-2"></i>Thống kê
                         </a>
+                        @endif
                     </div>
                 </div>
             </div>

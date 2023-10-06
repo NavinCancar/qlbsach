@@ -54,7 +54,7 @@ class CategoryProduct extends Controller
 
     }
 
-    public function all_category_product(){ //Hien thi tat ca
+    public function all_category_product(){
         $this->AuthLoginChu();
         $all_category_product = DB::table('the_loai_sach')->paginate(10);
         $manager_category_product = view('admin.category.all_category_product')->with('all_category_product', $all_category_product);

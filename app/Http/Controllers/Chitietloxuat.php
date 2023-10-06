@@ -15,13 +15,16 @@ use Illuminate\Http\Request;
 class Chitietloxuat extends Controller 
 {
 /*-----------------------------------*\
-  #BACKEND <FOR CHỦ CỬA HÀNG + NV KIỂM KHO>
+  #BACKEND <FOR CHỦ CỬA HÀNG + KIỂM KHO>
 \*-----------------------------------*/
 
     public function AuthLogin(){
         $NV_MA = Session::get('NV_MA');
+        $CV_MA = DB::table('nhan_vien')->where('NV_MA',$NV_MA)->first();
         if($NV_MA){
-            return Redirect::to('dashboard');
+            if($CV_MA->CV_MA != 1 && $CV_MA->CV_MA != 2){
+                return Redirect::to('dashboard')->send();
+            }
         }else{
             return Redirect::to('admin')->send();
         }
@@ -85,6 +88,7 @@ class Chitietloxuat extends Controller
     }
 
     public function edit_chitiet_loxuat($LX_MA, $SACH_MA){
+        $this->AuthLogin();
         $sach = DB::table('sach')->orderby('SACH_MA')->get();
         $edit_loxuat = DB::table('chi_tiet_lo_xuat')->where('LX_MA',$LX_MA)->where('SACH_MA',$SACH_MA)->get();
         Session::put('LX_MA',$LX_MA);

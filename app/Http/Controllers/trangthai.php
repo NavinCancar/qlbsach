@@ -12,26 +12,6 @@ use Illuminate\Http\Request;
 
 class trangthai extends Controller
 {
-
-// /*-----------------------------------*\
-//   #FRONTEND
-// \*-----------------------------------*/
-
-//     // Danh mục sản phẩm trang chủ
-//     public function show_trangthai_home($TT_MA){ ///
-//         $all_trangthai = DB::table('trang_thai')->get();
-
-//         $trangthai_by_id = DB::table('sach')
-//         ->join('thuoc_the_loai', 'sach.SACH_MA', '=', 'thuoc_the_loai.SACH_MA')
-//         ->join('trang_thai', 'trang_thai.TT_MA', '=', 'thuoc_the_loai.TT_MA')
-//         ->orderby('sach.SACH_NGAYTAO','desc')->where('trang_thai.TT_MA', $TT_MA)->paginate(16);
-
-//         $trangthai_name = DB::table('trang_thai')->where('trang_thai.TT_MA', $TT_MA )->get();
-
-//         return view('pages.trangthai.show_trangthai')->with('trangthai', $all_trangthai)
-//         ->with('trangthai_by_id', $trangthai_by_id)->with('trangthai_name', $trangthai_name);
-//     }
-
 /*-----------------------------------*\
   #BACKEND <FOR CHỦ CỬA HÀNG>
 \*-----------------------------------*/
@@ -47,8 +27,6 @@ class trangthai extends Controller
             return Redirect::to('admin')->send();
         }
     }
-
-
     
     public function add_trangthai(){
         $this->AuthLoginChu();
@@ -56,7 +34,7 @@ class trangthai extends Controller
 
     }
 
-    public function all_trangthai(){ //Hien thi tat ca
+    public function all_trangthai(){
         $this->AuthLoginChu();
         $all_trangthai = DB::table('trang_thai')->paginate(10);
         $manager_trangthai = view('admin.trangthai.all_trangthai')->with('all_trangthai', $all_trangthai);
@@ -124,7 +102,6 @@ class trangthai extends Controller
             return Redirect::to('all-trangthai');
         }
 
-        //KHOA KHUM HIỂU, CÓ DÍNH FK
         DB::table('trang_thai')->where('TT_MA',$TT_MA)->delete();
         Session::put('message','Xóa trạng thái đơn hàng thành công');
         return Redirect::to('all-trangthai');

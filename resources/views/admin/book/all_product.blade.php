@@ -1,5 +1,6 @@
 @extends('admin-layout')
 @section('admin-content')
+<?php $cv= Session::get('CV_MA_User'); ?>
                   <div class="row my-2 secondary-bg shadow-sm">
                     <h2 class="fs-2 mb-3 p-2 primary-bg text-center primary-text primary-font">Danh sách sách</h2>
                     <!--Header-->
@@ -34,8 +35,12 @@
                                   <th style="width:150px;">Tác giả</th>
                                   <th style="width:150px;">Thể loại</th>
                                   <th style="width:150px;">Nhà xuất bản</th>
+                                  @if($cv==1 || $cv==2)
                                   <th style="width:75px;">Tồn</th>
+                                  @endif
+                                  @if($cv==1)
                                   <th style="width:30px;"></th>
+                                  @endif
                                 </tr>
                             </thead>
                             <tbody>
@@ -70,6 +75,7 @@
                                     
                                   </td>
                                   <td>{{$cate_pro->NXB_TEN}}</td>
+                                  @if($cv==1 || $cv==2)
                                   <td><i>
                                     <?php
                                         //Check số lượng tồn
@@ -86,11 +92,14 @@
                                         echo ($nhap - $xuat - $ddh);
                                     ?>
                                   </i></td>
+                                  @endif
+                                  @if($cv==1)
                                   <td>
                                     <a href="{{URL::to('/show-product/'.$cate_pro -> SACH_MA)}}" class="active styling-edit" ui-toggle-class=""><i class="fa fa-info-circle text-primary text-active"></i></a>
                                     <a href="{{URL::to('/edit-product/'.$cate_pro -> SACH_MA)}}" class="active styling-edit" ui-toggle-class=""><i class="fa fa-pen text-success text-active"></i></a>
                                     <a onclick="return confirm('Bạn có chắc chắn muốn xóa mục này không?')" href="{{URL::to('/delete-product/'.$cate_pro -> SACH_MA)}}" class="active styling-edit" ui-toggle-class=""><i class="fa fa-times text-danger text"></i></a>
                                   </td>
+                                  @endif
                                 </tr>
                               @endforeach
                             </tbody>

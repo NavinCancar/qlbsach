@@ -34,7 +34,7 @@ class Chucvu extends Controller
 
     }
 
-    public function all_chuc_vu(){ //Hien thi tat ca
+    public function all_chuc_vu(){ 
         $this->AuthLoginChu();
         $all_chuc_vu = DB::table('chuc_vu')->paginate(10);
         $manager_chuc_vu = view('admin.chuc-vu.all_chuc_vu')->with('all_chuc_vu', $all_chuc_vu);

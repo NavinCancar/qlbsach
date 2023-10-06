@@ -113,6 +113,35 @@ class ProductController extends Controller
         return Redirect::to('chi-tiet-san-pham/'.$SACH_MA);
     }
 
+/*-----------------------------------*\
+  #BACKEND <FOR NHÂN VIÊN>
+\*-----------------------------------*/
+
+    public function AuthLogin(){
+        $NV_MA = Session::get('NV_MA');
+        if($NV_MA){
+            return Redirect::to('dashboard');
+        }else{
+            return Redirect::to('admin')->send();
+        }
+    }
+    
+    public function all_product(){
+        $this->AuthLogin();
+        $all_product = DB::table('sach')
+        ->join('nha_xuat_ban','sach.NXB_MA','=','nha_xuat_ban.NXB_MA')
+        ->orderby('SACH_MA', 'desc')->paginate(10);
+
+        $tls = DB::table('the_loai_sach')
+        ->join('thuoc_the_loai','thuoc_the_loai.TLS_MA','=','the_loai_sach.TLS_MA')->get();
+
+        $tg = DB::table('tac_gia')
+        ->join('cua_sach','tac_gia.TG_MA','=','cua_sach.TG_MA')->get();
+
+        $manager_product = view('admin.book.all_product')->with('all_product', $all_product)
+        ->with('tls', $tls)->with('tg', $tg);        
+        return view('admin-layout')->with('admin.book.all_product', $manager_product);
+    }
 
 /*-----------------------------------*\
   #BACKEND <FOR CHỦ CỬA HÀNG>
@@ -138,23 +167,6 @@ class ProductController extends Controller
 
         return view('admin.book.add_product')->with('nxb', $nxb)
         ->with('tls', $tls)->with('tg', $tg);  
-    }
-
-    public function all_product(){
-        $this->AuthLoginChu();
-        $all_product = DB::table('sach')
-        ->join('nha_xuat_ban','sach.NXB_MA','=','nha_xuat_ban.NXB_MA')
-        ->orderby('SACH_MA', 'desc')->paginate(10);
-
-        $tls = DB::table('the_loai_sach')
-        ->join('thuoc_the_loai','thuoc_the_loai.TLS_MA','=','the_loai_sach.TLS_MA')->get();
-
-        $tg = DB::table('tac_gia')
-        ->join('cua_sach','tac_gia.TG_MA','=','cua_sach.TG_MA')->get();
-
-        $manager_product = view('admin.book.all_product')->with('all_product', $all_product)
-        ->with('tls', $tls)->with('tg', $tg);        
-        return view('admin-layout')->with('admin.book.all_product', $manager_product);
     }
 
     public function save_product(Request $request){

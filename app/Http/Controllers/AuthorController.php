@@ -34,7 +34,7 @@ class AuthorController extends Controller
 
     }
 
-    public function all_author(){ //Hien thi tat ca
+    public function all_author(){ 
         $this->AuthLoginChu();
         $all_author = DB::table('tac_gia')->paginate(10);
         $manager_author = view('admin.author.all_author')->with('all_author', $all_author);

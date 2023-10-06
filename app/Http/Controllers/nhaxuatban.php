@@ -56,7 +56,7 @@ class nhaxuatban extends Controller
 
     }
 
-    public function all_nhaxuatban(){ //Hien thi tat ca
+    public function all_nhaxuatban(){
         $this->AuthLoginChu();
         $all_nhaxuatban = DB::table('nha_xuat_ban')->paginate(10);
         $manager_nhaxuatban = view('admin.nhaxuatban.all_nhaxuatban')->with('all_nhaxuatban', $all_nhaxuatban);

@@ -85,9 +85,21 @@ class AdminController extends Controller
   #BACKEND <FOR NHÂN VIÊN BÁN HÀNG>
 \*------------------------------------*/
 
+    public function AuthLoginChuBan(){
+        $NV_MA = Session::get('NV_MA');
+        $CV_MA = DB::table('nhan_vien')->where('NV_MA',$NV_MA)->first();
+        if($NV_MA){
+            if($CV_MA->CV_MA != 1 && $CV_MA->CV_MA != 3){
+                return Redirect::to('dashboard')->send();
+            }
+        }else{
+            return Redirect::to('admin')->send();
+        }
+    }
+
     //đánh giá
     public function danh_gia(){
-        $this->AuthLogin();
+        $this->AuthLoginChuBan();
 
         $all_danh_gia = DB::table('danh_gia')
         ->join('sach','sach.SACH_MA','=','danh_gia.SACH_MA')
@@ -97,7 +109,7 @@ class AdminController extends Controller
     }
 
     public function delete_danh_gia($DG_MA){
-        $this->AuthLogin();
+        $this->AuthLoginChuBan();
 
         DB::table('danh_gia')->where('DG_MA',$DG_MA)->delete();
         Session::put('message','Xóa đánh giá thành công');
@@ -108,9 +120,21 @@ class AdminController extends Controller
   #BACKEND <FOR CHỦ>
 \*------------------------------------*/
 
+    public function AuthLoginChu(){
+        $NV_MA = Session::get('NV_MA');
+        $CV_MA = DB::table('nhan_vien')->where('NV_MA',$NV_MA)->first();
+        if($NV_MA){
+            if($CV_MA->CV_MA != 1){
+                return Redirect::to('dashboard')->send();
+            }
+        }else{
+            return Redirect::to('admin')->send();
+        }
+    }
+
     //khách hàng
     public function khach_hang(){
-        $this->AuthLogin();
+        $this->AuthLoginChu();
 
         $all_khach_hang = DB::table('khach_hang')
         //->join('sach','sach.SACH_MA','=','khach_hang.SACH_MA')
@@ -121,7 +145,7 @@ class AdminController extends Controller
 
         //Thống kê
         public function thong_ke(){
-            $this->AuthLogin();
+            $this->AuthLoginChu();
     
             $dayprev=Carbon::now('Asia/Ho_Chi_Minh')->subMonths(3);
             $daynow=Carbon::now('Asia/Ho_Chi_Minh');
@@ -134,7 +158,7 @@ class AdminController extends Controller
         }
 
         public function thong_ke_tg(Request $request){
-            $this->AuthLogin();
+            $this->AuthLoginChu();
             $homnay=Carbon::now('Asia/Ho_Chi_Minh');
             if ($request->TGBDau && $request->TGKThuc && $request->TGBDau<=$request->TGKThuc && $request->TGKThuc<=$homnay ){
                 Session::put('TGBDau', $request->TGBDau);

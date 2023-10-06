@@ -12,26 +12,6 @@ use Illuminate\Http\Request;
 
 class hinhthuc extends Controller
 {
-
-// /*-----------------------------------*\
-//   #FRONTEND
-// \*-----------------------------------*/
-
-//     // Danh mục sản phẩm trang chủ
-//     public function show_hinhthuc_home($HTTT_MA){ ///
-//         $all_hinhthuc = DB::table('hinh_thuc_thanh_toan')->get();
-
-//         $hinhthuc_by_id = DB::table('sach')
-//         ->join('thuoc_the_loai', 'sach.SACH_MA', '=', 'thuoc_the_loai.SACH_MA')
-//         ->join('hinh_thuc_thanh_toan', 'hinh_thuc_thanh_toan.HTTT_MA', '=', 'thuoc_the_loai.HTTT_MA')
-//         ->orderby('sach.SACH_NGAYTAO','desc')->where('hinh_thuc_thanh_toan.HTTT_MA', $HTTT_MA)->paginate(16);
-
-//         $hinhthuc_name = DB::table('hinh_thuc_thanh_toan')->where('hinh_thuc_thanh_toan.HTTT_MA', $HTTT_MA )->get();
-
-//         return view('pages.hinhthuc.show_hinhthuc')->with('hinhthuc', $all_hinhthuc)
-//         ->with('hinhthuc_by_id', $hinhthuc_by_id)->with('hinhthuc_name', $hinhthuc_name);
-//     }
-
 /*-----------------------------------*\
   #BACKEND <FOR CHỦ CỬA HÀNG>
 \*-----------------------------------*/
@@ -47,8 +27,6 @@ class hinhthuc extends Controller
             return Redirect::to('admin')->send();
         }
     }
-
-
     
     public function add_hinhthuc(){
         $this->AuthLoginChu();
@@ -56,7 +34,7 @@ class hinhthuc extends Controller
 
     }
 
-    public function all_hinhthuc(){ //Hien thi tat ca
+    public function all_hinhthuc(){
         $this->AuthLoginChu();
         $all_hinhthuc = DB::table('hinh_thuc_thanh_toan')->paginate(10);
         $manager_hinhthuc = view('admin.hinhthuc.all_hinhthuc')->with('all_hinhthuc', $all_hinhthuc);

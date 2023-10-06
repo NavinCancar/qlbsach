@@ -12,26 +12,6 @@ use Illuminate\Http\Request;
 
 class tinhthanhpho extends Controller
 {
-
-// /*-----------------------------------*\
-//   #FRONTEND
-// \*-----------------------------------*/
-
-//     // Danh mục sản phẩm trang chủ
-//     public function show_tinhthanhpho_home($TTP_MA){ ///
-//         $all_tinhthanhpho = DB::table('tinh_thanh_pho')->get();
-
-//         $tinhthanhpho_by_id = DB::table('sach')
-//         ->join('thuoc_the_loai', 'sach.SACH_MA', '=', 'thuoc_the_loai.SACH_MA')
-//         ->join('tinh_thanh_pho', 'tinh_thanh_pho.TTP_MA', '=', 'thuoc_the_loai.TTP_MA')
-//         ->orderby('sach.SACH_NGAYTAO','desc')->where('tinh_thanh_pho.TTP_MA', $TTP_MA)->paginate(16);
-
-//         $tinhthanhpho_name = DB::table('tinh_thanh_pho')->where('tinh_thanh_pho.TTP_MA', $TTP_MA )->get();
-
-//         return view('pages.tinhthanhpho.show_tinhthanhpho')->with('tinhthanhpho', $all_tinhthanhpho)
-//         ->with('tinhthanhpho_by_id', $tinhthanhpho_by_id)->with('tinhthanhpho_name', $tinhthanhpho_name);
-//     }
-
 /*-----------------------------------*\
   #BACKEND <FOR CHỦ CỬA HÀNG>
 \*-----------------------------------*/
@@ -48,15 +28,13 @@ class tinhthanhpho extends Controller
         }
     }
 
-
-    
     public function add_tinhthanhpho(){
         $this->AuthLoginChu();
         return view('admin.tinhthanhpho.add_tinhthanhpho');
 
     }
 
-    public function all_tinhthanhpho(){ //Hien thi tat ca
+    public function all_tinhthanhpho(){
         $this->AuthLoginChu();
         $all_tinhthanhpho = DB::table('tinh_thanh_pho')->paginate(10);
         $manager_tinhthanhpho = view('admin.tinhthanhpho.all_tinhthanhpho')->with('all_tinhthanhpho', $all_tinhthanhpho);
