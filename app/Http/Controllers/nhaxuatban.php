@@ -106,7 +106,7 @@ class nhaxuatban extends Controller
         //Kiểm tra unique
         $check_unique = DB::table('nha_xuat_ban')->get();
         foreach($check_unique as $key => $unique){
-            if(strtolower($unique->NXB_TEN)==strtolower($request->NXB_TEN)){
+            if($unique->NXB_MA!=$NXB_MA && strtolower($unique->NXB_TEN)==strtolower($request->NXB_TEN)){
                 Session::put('message','Tên nhà xuất bản không thể trùng');
                 return Redirect::to('all-nhaxuatban');
             }

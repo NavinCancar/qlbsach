@@ -344,3 +344,8 @@ a:hover{
   font-weight: bold;
   color: var(--dark-blue);
 }
+
+.star{
+  color: var(--gold);
+  font-size: 0.8rem;
+}

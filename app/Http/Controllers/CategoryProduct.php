@@ -99,7 +99,7 @@ class CategoryProduct extends Controller
         //Kiểm tra unique
         $check_unique = DB::table('the_loai_sach')->get();
         foreach($check_unique as $key => $unique){
-            if(strtolower($unique->TLS_TEN)==strtolower($request->TLS_TEN)){
+            if($unique->TLS_MA!=$TLS_MA && strtolower($unique->TLS_TEN)==strtolower($request->TLS_TEN)){
                 Session::put('message','Tên thể loại sách không thể trùng');
                 return Redirect::to('all-category-product');
             }

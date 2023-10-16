@@ -66,7 +66,7 @@
                             <canvas id="chartId" aria-label="chart" heigth="350" width="880"></canvas>
                             <?php
                                 $connect = mysqli_connect("localhost", "root", "", "qlbsach");
-                                $query = "SELECT * FROM DON_DAT_HANG WHERE DDH_NGAYDAT BETWEEN '" . $TGBDau . "' AND '" .  $TGKThuc . "' AND TT_MA != 5 ORDER BY DDH_NGAYDAT";
+                                $query = "SELECT * FROM DON_DAT_HANG WHERE DDH_NGAYDAT BETWEEN '" . $TGBDau . " 00:00:00' AND '" .  $TGKThuc . " 23:59:59' AND TT_MA != 5 ORDER BY DDH_NGAYDAT";
                                 $result = mysqli_query($connect, $query);
                                 $labels = array();
                                 $data = array();
@@ -78,21 +78,24 @@
                             <script>
                                 var ctx = document.getElementById("chartId").getContext("2d");
                                 var myChart = new Chart(ctx, {
-                                type: 'line',
-                                data: {
-                                    labels: <?php echo json_encode($labels); ?>,
-                                    datasets: [{
-                                    label: 'Doanh thu',
-                                    data: <?php echo json_encode($data); ?>,
-                                    backgroundColor: '#27a4f2',
-                                    borderColor: 'black',
-                                    borderWidth: 2,
-                                    pointRadius: 5,
-                                    }],
-                                },
-                                options: {
-                                    responsive: false,
-                                },
+                                    //type: 'line',
+                                    type: 'bar',
+                                    data: {
+                                        labels: <?php echo json_encode($labels); ?>,
+                                        datasets: [{
+                                        label: 'Doanh thu',
+                                        data: <?php echo json_encode($data); ?>,
+                                        //backgroundColor: '#27a4f2',
+                                        backgroundColor: ['#cfebfc',  '#bbdffb', '#90cbf9', '#64b7f6', '#41a7f5', '#1e97f3', '#1a8ae5', '#1477d2', '#1065c0', '#0747a1', '#063f90', 
+                                        '#053880', '#043170', '#042a60', '#032350'],
+                                        borderColor: 'black',
+                                        borderWidth: 2,
+                                        pointRadius: 5,
+                                        }],
+                                    },
+                                    options: {
+                                        responsive: false,
+                                    },
                                 });
                             </script>
 
@@ -110,7 +113,7 @@
                             JOIN thuoc_the_loai s on s.TLS_MA = t.TLS_MA 
                             JOIN chi_tiet_don_dat_hang c on s.SACH_MA = c.SACH_MA 
                             JOIN don_dat_hang d on c.DDH_MA = d.DDH_MA
-                            WHERE d.DDH_NGAYDAT BETWEEN '".$TGBDau."' AND '".$TGKThuc."'
+                            WHERE d.DDH_NGAYDAT BETWEEN '" . $TGBDau . " 00:00:00' AND '" .  $TGKThuc . " 23:59:59' 
                             AND d.TT_MA != 5
                             GROUP by s.TLS_MA ORDER BY tong;";
                             $result2 = mysqli_query($connect, $query2);
@@ -143,6 +146,62 @@
                                 },
                             });
                         </script>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row my-2 secondary-bg shadow-sm">
+                    <h3 class="fs-2 mb-3 p-2 primary-bg primary-text primary-font">Top 3 sách bán chạy nhất</h3>
+                    <?php 
+                        $hot_product = DB::table('sach')
+                        ->join(DB::raw('(select `sach`.`SACH_MA`, sum(`chi_tiet_don_dat_hang`.`CTDDH_SOLUONG`) as soluongban from `sach` 
+                                        inner join `chi_tiet_don_dat_hang` on `chi_tiet_don_dat_hang`.`SACH_MA` = `sach`.`SACH_MA` 
+                                        inner join `don_dat_hang` on `don_dat_hang`.`DDH_MA` = `chi_tiet_don_dat_hang`.`DDH_MA` 
+                                        where `don_dat_hang`.`DDH_NGAYDAT` BETWEEN "' . $TGBDau . ' 00:00:00" AND "' . $TGKThuc . ' 23:59:59" 
+                                        and `don_dat_hang`.`TT_MA` != 5 group by `sach`.`SACH_MA`) j'), 
+                                'j.SACH_MA', '=', 'sach.SACH_MA')
+                        ->orderby('soluongban','desc')->limit(3)->get();
+                    ?>
+                    <!--Content-->
+                    <div class="col">
+                        <div class="panel-body bg-white rounded shadow-sm center mb-3 pt-2">
+                            <div class="wrapper row">
+                                @foreach($hot_product as $key => $product)
+                                    <div class="col-sm-4 text-center top-product-card">
+                                        <a href="{{ URL::to('/chi-tiet-san-pham/'. $product->SACH_MA) }}">
+                                            <img src="public/frontend/images/sach/{{$product->SACH_DUONGDANANHBIA}}" width='85%'>
+                                        </a>
+                                        <div class="rate pt-2">
+                                            <div class="star">
+                                                <?php
+                                                // Create connection
+                                                $conn = new mysqli('localhost', 'root', '', 'qlbsach');
+                                                // Check connection
+                                                if ($conn->connect_error) {
+                                                die("Connection failed: " . $conn->connect_error);
+                                                }
+                                                $point = "select ROUND(AVG(DG_DIEM)) dg, COUNT('DG_MA') sl from Danh_gia group by SACH_MA having SACH_MA ='".$product->SACH_MA."'";
+                                                $result = $conn->query($point);
+                                                $dg=0; $sl=0;
+                                                while ($row = $result->fetch_assoc()) {
+                                                    $dg= $row['dg']."<br>";
+                                                    $sl= $row['sl'];
+                                                }
+                                                $x = 1;
+                                                for ($x = 1; $x <= $dg; $x++) {
+                                                echo '<i class="fas fa-star"></i>';
+                                                } 
+                                                echo '<i> ('.$sl.')</i>';
+                                                ?>
+                                            </div>
+                                        </div>
+
+                                        <h4 class="fs-5 p-2 primary-text primary-font">{{$product->SACH_TEN}}</h4>
+                                        <h6>{{number_format($product->SACH_GIA)}} VNĐ</h6>
+                                        <h6>Số lượng bán: {{$product->soluongban}}</h6>
+                                    </div>
+                                @endforeach
+                            </div>
                         </div>
                     </div>
                 </div>

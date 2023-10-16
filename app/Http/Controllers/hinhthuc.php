@@ -79,7 +79,7 @@ class hinhthuc extends Controller
         //Kiểm tra unique
         $check_unique = DB::table('hinh_thuc_thanh_toan')->get();
         foreach($check_unique as $key => $unique){
-            if(strtolower($unique->HTTT_TEN)==strtolower($request->HTTT_TEN)){
+            if($unique->HTTT_MA!=$HTTT_MA && strtolower($unique->HTTT_TEN)==strtolower($request->HTTT_TEN)){
                 Session::put('message','Tên hình thức thanh toán không thể trùng');
                 return Redirect::to('all-hinhthuc');
             }

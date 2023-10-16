@@ -39,13 +39,13 @@
           </li>
 
           <li class="navbar-item">
-            <a href="{{ URL::to('/trang-chu')}}" class="navbar-link" data-nav-link>Trang chủ</a>
+            <a href="{{ URL::to('/trang-chu')}}" class="navbar-link" data-nav-link><i class="fa fa-home"></i></a>
           </li>
           
           <li class="navbar-item">
             <div class="dropdown">
             <a class="navbar-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Danh mục sản phẩm
+              <i class="fa fa-list"></i> Danh mục
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
               <li><a class="dropdown-item" href="{{ URL::to('/danh-muc-san-pham/tat-ca')}}">Tất cả sản phẩm</a></li>
@@ -57,7 +57,17 @@
           </li>
 
           <li class="navbar-item">
-            <a href="{{URL::to('/show-cart')}}" class="navbar-link" data-nav-link>Giỏ hàng</a>
+            <a href="{{URL::to('/show-cart')}}" class="navbar-link" data-nav-link><i class="fa fa-shopping-cart"></i>
+              <?php 
+                $idkh= Session::get('KH_MA');
+                if($idkh){
+                  $sl_ghkh = DB::table('chi_tiet_gio_hang')
+                            ->join('gio_hang','chi_tiet_gio_hang.GH_MA','=','gio_hang.GH_MA')
+                            ->where('gio_hang.KH_MA',$idkh)->count('chi_tiet_gio_hang.SACH_MA');
+                  echo '<i class="badge rounded-pill" style="background-color: var(--blue)">'.$sl_ghkh.'</i>';
+                }
+              ?>
+            </a>
           </li>
 
           <li class="navbar-item">

@@ -76,7 +76,7 @@ class Chucvu extends Controller
         //Kiểm tra unique
         $check_unique = DB::table('chuc_vu')->get();
         foreach($check_unique as $key => $unique){
-            if(strtolower($unique->CV_TEN)==strtolower($request->CV_TEN)){
+            if($unique->CV_MA!=$CV_MA && strtolower($unique->CV_TEN)==strtolower($request->CV_TEN)){
                 Session::put('message','Tên chức vụ không thể trùng');
                 return Redirect::to('all-chuc-vu');
             }

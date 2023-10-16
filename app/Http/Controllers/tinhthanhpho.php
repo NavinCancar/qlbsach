@@ -81,7 +81,7 @@ class tinhthanhpho extends Controller
         //Kiểm tra unique
         $check_unique = DB::table('tinh_thanh_pho')->get();
         foreach($check_unique as $key => $unique){
-            if(strtolower($unique->TTP_TEN)==strtolower($request->TTP_TEN)){
+            if($unique->TTP_MA!=$TTP_MA && strtolower($unique->TTP_TEN)==strtolower($request->TTP_TEN)){
                 Session::put('message','Tên tỉnh/thành phố không thể trùng');
                 return Redirect::to('all-tinhthanhpho');
             }

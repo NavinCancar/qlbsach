@@ -81,7 +81,7 @@ class AuthorController extends Controller
         //Kiểm tra unique
         $check_unique = DB::table('tac_gia')->get();
         foreach($check_unique as $key => $unique){
-            if(strtolower($unique->TG_BUTDANH)==strtolower($request->TG_BUTDANH)){
+            if($unique->TG_MA!=$TG_MA && strtolower($unique->TG_BUTDANH)==strtolower($request->TG_BUTDANH)){
                 Session::put('message','Tên tác giả không thể trùng');
                 return Redirect::to('all-author');
             }

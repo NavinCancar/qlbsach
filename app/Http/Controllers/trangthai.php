@@ -79,7 +79,7 @@ class trangthai extends Controller
         //Kiểm tra unique
         $check_unique = DB::table('trang_thai')->get();
         foreach($check_unique as $key => $unique){
-            if(strtolower($unique->TT_TEN)==strtolower($request->TT_TEN)){
+            if($unique->TT_MA!=$TT_MA && strtolower($unique->TT_TEN)==strtolower($request->TT_TEN)){
                 Session::put('message','Tên trạng thái đơn hàng không thể trùng');
                 return Redirect::to('all-trangthai');
             }
