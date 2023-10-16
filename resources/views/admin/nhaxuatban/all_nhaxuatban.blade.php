@@ -19,11 +19,11 @@
                         <table class="table bg-white rounded shadow-sm table-hover">
                             <thead>
                                 <tr>
-                                  <th>Mã nhà xuất bản</th>
+                                  <th>Mã</th>
                                   <th>Tên nhà xuất bản</th>
-                                  <th>Số điện thoại nhà xuất bản</th>
-                                  <th>Địa chỉ nhà xuất bản</th>
-                                  <th>Email nhà xuất bản</th>
+                                  <th>Số điện thoại</th>
+                                  <th>Địa chỉ</th>
+                                  <th>Email</th>
                                   <th style="width:60px;"></th>
                                 </tr>
                             </thead>

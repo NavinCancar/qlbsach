@@ -68,7 +68,7 @@
                                 <input type="text" name="DDH_THUEVAT" readonly value="8" class="form-control" id="exampleInputEmail1">
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputEmail1"><b>Tổng tiền (Nội thất + Thuế):</b></label>
+                                <label for="exampleInputEmail1"><b>Tổng tiền (Sách + Thuế):</b></label>
                                 <input type="text" name="" readonly value="<?php echo number_format($tong+$tong*0.08);?>" class="form-control" id="exampleInputEmail1">
                                 <input name="DDH_TONGTIEN" type="hidden" value="<?php echo $tong+$tong*0.08;?>" class="form-control" id="exampleInputEmail1">
                             </div>
