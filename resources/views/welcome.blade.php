@@ -39,7 +39,9 @@
           </li>
 
           <li class="navbar-item">
-            <a href="{{ URL::to('/trang-chu')}}" class="navbar-link" data-nav-link><i class="fa fa-home"></i></a>
+            <a href="{{ URL::to('/trang-chu')}}" class="navbar-link" data-nav-link>
+              <i class="fa fa-home"></i> Trang chủ
+            </a>
           </li>
           
           <li class="navbar-item">
@@ -64,9 +66,10 @@
                   $sl_ghkh = DB::table('chi_tiet_gio_hang')
                             ->join('gio_hang','chi_tiet_gio_hang.GH_MA','=','gio_hang.GH_MA')
                             ->where('gio_hang.KH_MA',$idkh)->count('chi_tiet_gio_hang.SACH_MA');
-                  echo '<i class="badge rounded-pill" style="background-color: var(--blue)">'.$sl_ghkh.'</i>';
+                  echo '<i class="badge rounded-pill" style="background-color: var(--blue); position: relative; /* Đảm bảo rằng phần tử sử dụng vị trí tương đối */
+                  top: -10px; left: -7px /* Dịch chuyển phần tử lên 2px so với vị trí ban đầu */">'.$sl_ghkh.'</i>';
                 }
-              ?>
+              ?>Giỏ hàng
             </a>
           </li>
 
@@ -84,12 +87,12 @@
                       echo'<li><a class="dropdown-item"  href="'.URL::to('/tai-khoan').'"><i class=" fa fa-user-circle"></i> Tài khoản</a></li>';
                       echo'<li><a class="dropdown-item"  href="'.URL::to('/doi-mat-khau').'"><i class=" fa fa-key"></i> Đổi mật khẩu</a></li>';
                       echo'<li><a class="dropdown-item"  href="'.URL::to('/dia-chi-giao-hang').'" ><i class="fa fa-location-arrow"></i> Địa chỉ giao hàng</a></li>';
-                      echo'<li><a class="dropdown-item"  href="'.URL::to('/dang-xuat').'"><i class="fa fa-key"></i> Đăng xuất</a></li>';
+                      echo'<li><a class="dropdown-item"  href="'.URL::to('/dang-xuat').'"><i class="fa fa-sign-out-alt"></i> Đăng xuất</a></li>';
                       echo '</ul>
                       </div>';
               }
                           
-              else echo '<a href="'.URL::to('/dang-nhap').'" class="navbar-link" data-nav-link>Đăng ký/Đăng nhập</a>';
+              else echo '<a href="'.URL::to('/dang-nhap').'" class="navbar-link" data-nav-link><i class="fa fa-user"></i> Đăng ký/Đăng nhập</a>';
             ?>
           </li>
            
