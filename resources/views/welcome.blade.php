@@ -199,13 +199,13 @@
                 <p class="section-subtitle">NHÓM 4</p>
               </li>
               <li>
-                <p class="footer-list-text">Nguyễn Phương Hiếu</p>
+                <p class="footer-list-text">Nguyễn Phương Hiếu B2003737</p>
               </li>
               <li>
-                <p class="footer-list-text">Nguyễn Thị Ngọc Hương</p>
+                <p class="footer-list-text">Nguyễn Thị Ngọc Hương B2003741</p>
               </li>
               <li>
-                <p class="footer-list-text">Vũ Thị Hương Khoa</p>
+                <p class="footer-list-text">Vũ Thị Hương Khoa B2011972</p>
               </li>
             </ul>
             </ul>

@@ -11,6 +11,7 @@
                                     <?php
                                     $ddh_cxl = Session::get('SO_DDH_CXL');
                                     if ($ddh_cxl) echo $ddh_cxl;
+                                    else echo '0';
                                     ?>
                                 </h3>
                                 <div class="circle-bg secondary-bg p-3 text-center">
@@ -29,6 +30,7 @@
                                     <?php
                                         $ddh_dxl= Session::get('SO_DDH_DXL');
                                         if ($ddh_dxl) echo $ddh_dxl;
+                                        else echo '0';
                                     ?>
                                 </h3>
                                 <div class="circle-bg secondary-bg p-3 text-center">
@@ -47,6 +49,7 @@
                                     <?php
                                     	$ddh_dg= Session::get('SO_DDH_DG');
                                         if ($ddh_dg) echo $ddh_dg;
+                                        else echo '0';
                                     ?>
                                 </h3>
                                 <div class="circle-bg secondary-bg p-3 text-center">
@@ -65,6 +68,7 @@
                                     <?php
                                     	$users= Session::get('SO_NGUOI_DUNG');
                                         if ($users) echo $users;
+                                        else echo '0';
                                     ?>
                                 </h3>
                                 <div class="circle-bg secondary-bg p-3 text-center">
